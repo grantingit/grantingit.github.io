@@ -3903,10 +3903,23 @@ pre .coffeescript .title {
     white-space: nowrap;
   }
 }
+@media (min-width: 1200px) {
+  .trm-top-bar .container .trm-left-side {
+    justify-content: flex-start;
+    padding-left: 5px;
+  }
+}
+.trm-banner-text .trm-breadcrumbs,
+#scroll-triger {
+  display: none !important;
+}
 .trm-home-layout .trm-main-card,
 .trm-page-layout .trm-main-card {
   height: auto;
   min-height: 0;
+}
+.trm-main-card-frame.fixed .trm-main-card {
+  border-radius: var(--card-border-radius, 10px) !important;
 }
 @media (max-width: 992px) {
   .trm-page-sidebar {
@@ -3970,8 +3983,6 @@ pre .coffeescript .title {
   .trm-page-sidebar .trm-main-card-frame {
     margin-left: 16px;
     margin-right: 16px;
-  }
-  .trm-page-sidebar .trm-main-card-frame {
     transform: translateY(-16px);
   }
 }
