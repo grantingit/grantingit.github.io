@@ -92,7 +92,7 @@
 
   
   <url>
-    <loc>https://grantingit.github.io/tags/Hexo/</loc>
+    <loc>https://grantingit.github.io/tags/%E4%B8%BB%E9%A2%98/</loc>
     <lastmod>2026-09-20</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -113,7 +113,7 @@
   </url>
   
   <url>
-    <loc>https://grantingit.github.io/tags/%E4%B8%BB%E9%A2%98/</loc>
+    <loc>https://grantingit.github.io/tags/Hexo/</loc>
     <lastmod>2026-09-20</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -150,14 +150,14 @@
 
   
   <url>
-    <loc>https://grantingit.github.io/categories/%E6%8A%80%E6%9C%AF/</loc>
+    <loc>https://grantingit.github.io/categories/%E8%B5%84%E8%AE%AF/</loc>
     <lastmod>2026-09-20</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://grantingit.github.io/categories/%E8%B5%84%E8%AE%AF/</loc>
+    <loc>https://grantingit.github.io/categories/%E6%8A%80%E6%9C%AF/</loc>
     <lastmod>2026-09-20</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
