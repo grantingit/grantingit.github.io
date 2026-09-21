@@ -380,26 +380,55 @@
 
       <div class="trm-page-content col-lg-8">
         <div id="trm-content" class="trm-content">
-          <div class="trm-post-info row hidden-sm">
-    <div class="col-sm-4">
-        <div class="trm-card trm-label trm-label-light text-center">
-            <i class="iconfont far fa-calendar-alt trm-icon"></i><br>
-            09/11
-        </div>
+          
+
+<div class="trm-post-info row hidden-sm">
+  <div class="col-sm-4">
+    <div class="trm-card trm-label trm-label-light text-center">
+      <i class="iconfont far fa-calendar-alt trm-icon"></i><br>
+      09/11
     </div>
-    <div class="col-sm-4">
-        <div class="trm-card trm-label trm-label-light text-center">
-            <i class="iconfont far fa-clock trm-icon"></i><br>
-            10:00
-        </div>
+  </div>
+  <div class="col-sm-4">
+    <div class="trm-card trm-label trm-label-light text-center trm-post-taxonomy ">
+      <i class="iconfont fas fa-folder-open trm-icon"></i><br>
+      <span class="trm-post-category">资讯</span>
+      
     </div>
-    <div class="col-sm-4">
-        <div id="post-author" class="trm-card trm-label trm-label-light text-center">
-            <i class="iconfont far fa-user trm-icon"></i><br>
-            ruanyf
-        </div>
+  </div>
+  <div class="col-sm-4">
+    <div id="post-author" class="trm-card trm-label trm-label-light text-center">
+      <i class="iconfont far fa-user trm-icon"></i><br>
+      ruanyf
     </div>
+  </div>
 </div>
+
+<script>
+(function () {
+  var fitPostTags = function () {
+    document.querySelectorAll('.trm-post-tags').forEach(function (tags) {
+      tags.style.removeProperty('font-size');
+
+      var size = Number.parseFloat(window.getComputedStyle(tags).fontSize);
+      while (tags.scrollWidth > tags.clientWidth && size > 6) {
+        size -= 0.5;
+        tags.style.fontSize = size + 'px';
+      }
+    });
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', fitPostTags, { once: true });
+  } else {
+    fitPostTags();
+  }
+
+  window.addEventListener('resize', fitPostTags);
+  document.addEventListener('swup:contentReplaced', fitPostTags);
+})();
+</script>
+
 <div class="trm-card ">
     <article id="article-container" class="trm-publication">
     <p>这里记录每周值得分享的科技内容，周五发布。</p>
