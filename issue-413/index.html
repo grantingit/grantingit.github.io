@@ -1,0 +1,794 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta name="x5-fullscreen" content="true">
+<meta name="full-screen" content="yes">
+<meta name="theme-color" content="#317EFB" />
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=0" name="viewport">
+<meta name="description" content="这里记录每周值得分享的科技内容，周五发布。（[通知] 下周五开始的中秋和十一假期，周刊休息。） 本杂志开源，欢迎投稿。另有《谁在招人》服务，发布程序员招聘信息。合作请邮件联系（yifeng.ruan@gmail.com）。 封面图 华东师范大学闵行校区新启用的西校门，仿造了它的前身之一光华大学的校门。（via） 再见了，React NativeShopify 宣布，放弃 React Native，">
+<meta property="og:type" content="article">
+<meta property="og:title" content="科技爱好者周刊（第 413 期）：再见了，React Native">
+<meta property="og:url" content="https://grantingit.github.io/issue-413/">
+<meta property="og:site_name" content="Grant&#39;s blog">
+<meta property="og:description" content="这里记录每周值得分享的科技内容，周五发布。（[通知] 下周五开始的中秋和十一假期，周刊休息。） 本杂志开源，欢迎投稿。另有《谁在招人》服务，发布程序员招聘信息。合作请邮件联系（yifeng.ruan@gmail.com）。 封面图 华东师范大学闵行校区新启用的西校门，仿造了它的前身之一光华大学的校门。（via） 再见了，React NativeShopify 宣布，放弃 React Native，">
+<meta property="og:locale">
+<meta property="og:image" content="https://grantingit.github.io/img/404.jpg">
+<meta property="og:image" content="https://grantingit.github.io/img/404.jpg">
+<meta property="og:image" content="https://grantingit.github.io/img/404.jpg">
+<meta property="og:image" content="https://grantingit.github.io/img/404.jpg">
+<meta property="og:image" content="https://grantingit.github.io/img/404.jpg">
+<meta property="og:image" content="https://grantingit.github.io/img/404.jpg">
+<meta property="og:image" content="https://grantingit.github.io/img/404.jpg">
+<meta property="og:image" content="https://grantingit.github.io/img/404.jpg">
+<meta property="og:image" content="https://grantingit.github.io/img/404.jpg">
+<meta property="og:image" content="https://grantingit.github.io/img/404.jpg">
+<meta property="og:image" content="https://grantingit.github.io/img/404.jpg">
+<meta property="og:image" content="https://grantingit.github.io/img/404.jpg">
+<meta property="og:image" content="https://grantingit.github.io/img/404.jpg">
+<meta property="og:image" content="https://grantingit.github.io/img/404.jpg">
+<meta property="og:image" content="https://grantingit.github.io/img/404.jpg">
+<meta property="og:image" content="https://grantingit.github.io/img/404.jpg">
+<meta property="og:image" content="https://grantingit.github.io/img/404.jpg">
+<meta property="og:image" content="https://grantingit.github.io/img/404.jpg">
+<meta property="og:image" content="https://grantingit.github.io/img/404.jpg">
+<meta property="og:image" content="https://grantingit.github.io/img/404.jpg">
+<meta property="og:image" content="https://grantingit.github.io/img/404.jpg">
+<meta property="og:image" content="https://grantingit.github.io/img/404.jpg">
+<meta property="og:image" content="https://grantingit.github.io/img/404.jpg">
+<meta property="og:image" content="https://grantingit.github.io/img/404.jpg">
+<meta property="og:image" content="https://grantingit.github.io/img/404.jpg">
+<meta property="og:image" content="https://grantingit.github.io/img/404.jpg">
+<meta property="og:image" content="https://grantingit.github.io/img/404.jpg">
+<meta property="og:image" content="https://grantingit.github.io/img/404.jpg">
+<meta property="og:image" content="https://grantingit.github.io/img/404.jpg">
+<meta property="og:image" content="https://grantingit.github.io/img/404.jpg">
+<meta property="og:image" content="https://grantingit.github.io/img/404.jpg">
+<meta property="og:image" content="https://grantingit.github.io/img/404.jpg">
+<meta property="og:image" content="https://grantingit.github.io/img/404.jpg">
+<meta property="og:image" content="https://grantingit.github.io/img/404.jpg">
+<meta property="og:image" content="https://grantingit.github.io/img/404.jpg">
+<meta property="article:published_time" content="2026-09-18T02:00:00.000Z">
+<meta property="article:modified_time" content="2026-09-18T02:00:00.000Z">
+<meta property="article:author" content="Grant">
+<meta property="article:tag" content="博客, 技术, 笔记, Hexo">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://grantingit.github.io/img/404.jpg">
+
+    <meta name="keywords" content="博客, 技术, 笔记, Hexo">
+
+
+<title >科技爱好者周刊（第 413 期）：再见了，React Native</title>
+
+<!-- Favicon -->
+
+    <link href='/img/favicon.svg?v=2.2.7' rel='icon' type='image/png' sizes='16x16' ></link>
+
+
+    <link href='/img/favicon.svg?v=2.2.7' rel='icon' type='image/png' sizes='32x32' ></link>
+
+
+
+
+<!-- Plugin -->
+
+
+
+
+    
+<link rel="stylesheet" href="/css/plugins/bootstrap.row.css">
+
+    
+<link rel="stylesheet" href="https://unpkg.com/@fancyapps/ui@4.0/dist/fancybox.css">
+
+    
+    
+
+
+
+
+<!-- Icon -->
+
+    
+<link rel="stylesheet" href="/css/plugins/font-awesome.min.css">
+
+
+
+
+<!-- Variable -->
+<script>window.ASYNC_CONFIG = {"hostname":"grantingit.github.io","author":"Grant","root":"/","typed_text":null,"theme_version":"2.2.7","theme":{"switch":true,"default":"auto"},"favicon":{"logo":"/img/favicon.svg","icon16":"/img/favicon.svg","icon32":"/img/favicon.svg","apple_touch_icon":null,"webmanifest":null,"visibilitychange":false,"hidden":"/failure.ico","show_text":"(/≧▽≦/)咦！又好了！","hide_text":"(●—●)喔哟，崩溃啦！","dark_loge":null},"i18n":{"placeholder":"搜索文章...","empty":"找不到您查询的内容: ${query}","hits":"找到 ${hits} 条结果","hits_time":"找到 ${hits} 条结果（用时 ${time} 毫秒）","author":"本文作者：","copyright_link":"本文链接：","copyright_license_title":"版权声明：","copyright_license_content":"本博客所有文章除特别声明外，均默认采用 undefined 许可协议。","copy_success":"复制成功","copy_failure":"复制失败","open_read_mode":"进入阅读模式","exit_read_mode":"退出阅读模式","notice_outdate_message":"距离上次更新已经 undefined 天了, 文章内容可能已经过时。","sticky":"置顶","just":"刚刚","min":"分钟前","hour":"小时前","day":"天前","month":"个月前"},"swup":false,"plugin":{"flickr_justified_gallery":"https://unpkg.com/flickr-justified-gallery@latest/dist/fjGallery.min.js"},"icons":{"sun":"far fa-sun","moon":"far fa-moon","play":"fas fa-play","email":"far fa-envelope","next":"fas fa-arrow-right","calendar":"far fa-calendar-alt","clock":"far fa-clock","user":"far fa-user","back_top":"fas fa-arrow-up","close":"fas fa-times","search":"fas fa-search","reward":"fas fa-hand-holding-usd","toc_tag":"fas fa-th-list","read":"fas fa-book-reader","arrows":"fas fa-arrows-alt-h","double_arrows":"fas fa-angle-double-down","copy":"fas fa-copy","user_tag":"fas fa-user-alt"},"icontype":"font","highlight":{"plugin":"highlighjs","theme":true,"copy":true,"lang":true,"title":"default","height_limit":200},"toc":{"post_title":false},"live_time":{"start_time":"","prefix":"博客已萌萌哒运行 undefined 天"},"danmu":{"enable":false,"el":".trm-banner"},"search":{"enable":true,"type":"local","href":"https://www.google.com/search?q=site:","domain":null,"path":"search.json"}};</script>
+<script id="async-page-config">window.PAGE_CONFIG = {"isPost":true,"isHome":false,"postUpdate":"2026-09-18 10:00:00"};</script>
+
+<!-- Theme mode css -->
+<link data-swup-theme rel="stylesheet" href="/css/index.css?v=2.2.7" id="trm-switch-style">
+<script>
+    let defaultMode = ASYNC_CONFIG.theme.default !=='auto' ?  ASYNC_CONFIG.theme.default : (window.matchMedia("(prefers-color-scheme: light)").matches ? 'style-light' : 'style-dark')
+    let catchMode = localStorage.getItem('theme-mode') || defaultMode;
+    let type = catchMode === 'style-dark' ? 'add' : 'remove';
+    document.documentElement.classList[type]('dark')
+</script>
+
+<!-- CDN -->
+
+
+    
+    
+
+
+
+<!-- Site Analytics -->
+
+ 
+<meta name="generator" content="Hexo 8.1.2"></head>
+
+<body>
+
+  <!-- app wrapper -->
+  <div class="trm-app-frame">
+
+    <!-- page preloader -->
+    <div class="trm-preloader">
+    <div class="trm-holder">
+        <div class="preloader">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </div>
+</div>
+    <!-- page preloader end -->
+
+    <!-- change mode preloader -->
+    <div class="trm-mode-swich-animation-frame">
+    <div class="trm-mode-swich-animation">
+        <i class="i-sun"><i class="iconfont far fa-sun"></i></i>
+        <div class="trm-horizon"></div>
+        <i class="i-moon"><i class="iconfont far fa-moon"></i></i>
+    </div>
+</div>
+    <!-- change mode preloader end -->
+
+      <!-- scroll container -->
+      <div id="trm-dynamic-content" class="trm-swup-animation">
+        <div id="trm-scroll-container" class="trm-scroll-container" style="opacity: 0">
+            <!-- top bar -->
+            <header class="trm-top-bar">
+	<div class="container">
+		<div class="trm-left-side">
+			<!-- logo -->
+<a href="/" class="trm-logo-frame trm-anima-link">
+    
+        <img alt="logo" src="/img/favicon.svg">
+    
+    
+        <div class="trm-logo-text">
+            Grant&#39;s<span>blog</span>
+        </div>
+    
+</a>
+<!-- logo end -->
+		</div>
+		<div class="trm-right-side">
+			<!-- menu -->
+<div class="trm-menu">
+    <nav>
+        <ul>
+            
+            <li class="menu-item-has-children ">
+                <a  href="/" target="">
+                    首页
+                </a>
+                
+            </li>
+            
+            <li class="menu-item-has-children ">
+                <a  href="/categories/%E8%B5%84%E8%AE%AF/" target="">
+                    资讯
+                </a>
+                
+            </li>
+            
+            <li class="menu-item-has-children ">
+                <a  href="/archives/" target="">
+                    文章
+                </a>
+                
+            </li>
+            
+        </ul>
+    </nav>
+</div>
+<!-- menu end -->
+			
+    <!-- mode switcher place -->
+    <div class="trm-mode-switcher-place">
+        <div class="trm-mode-switcher">
+            <i class="iconfont far fa-sun"></i>
+            <input class="tgl tgl-light" id="trm-swich" type="checkbox">
+            <label class="trm-swich" for="trm-swich"></label>
+            <i class="iconfont far fa-moon"></i>
+        </div>
+    </div>
+    <!-- mode switcher place end -->
+
+			
+    
+    <div id="trm-search-btn" class="trm-search-btn">
+        <i class="iconfont fas fa-search"></i>
+    </div>
+     
+
+		</div>
+		<div class="trm-menu-btn">
+			<span></span>
+		</div>
+	</div>
+</header>
+            <!-- top bar end -->
+
+            <!-- body -->
+            
+<div class="trm-content-start">
+  <div class="trm-banner">
+    
+    <!-- banner cover -->
+    <img style="object-position:top;object-fit:cover;" alt="banner" class="trm-banner-cover" src="/issue-413/img/cover.jpg">
+    <!-- banner cover end -->
+    
+
+    <!-- banner content -->
+    <div class="trm-banner-content trm-overlay">
+        <div class="container">
+            <div class="row">
+                
+                <div class="col-lg-4"></div>
+                
+                <div class="col-lg-8">
+
+                    <!-- banner title -->
+                    <div class="trm-banner-text ">
+                        <div class="trm-label trm-mb-20">
+                            NEWS LETTER
+                        </div>
+                        <h1 class="trm-mb-30 trm-hsmb-font">
+                            科技爱好者周刊（第 413 期）：再见了，React Native
+                        </h1>
+
+                        
+                            <ul class="trm-breadcrumbs trm-label">
+                                <li>
+                                    <a href="/" class="trm-anima-link">Home</a>
+                                </li>
+                                <li>
+                                    <span>
+                                        issue-413
+                                    </span>
+                                </li>
+                            </ul>
+                        
+                    </div>
+                    <!-- banner title end -->
+
+                    <!-- scroll hint -->
+                    <span id="scroll-triger" class="trm-scroll-hint-frame">
+                        <div class="trm-scroll-hint"></div>
+                        <span class="trm-label">Scroll down</span>
+                    </span>
+                    <!-- scroll hint end -->
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- banner content end -->
+</div>
+
+  <div class="container">
+    <div class="row trm-page-layout">
+      
+        <div class="trm-page-sidebar col-lg-4 hidden-sm">
+          <div class="trm-main-card-frame trm-sidebar">
+    <div class="trm-main-card"> 
+        <!-- card header -->
+<div class="trm-mc-header">
+    <div class="trm-avatar-frame trm-mb-20">
+        <img alt="Avatar" class="trm-avatar" src="/img/avatar.jpg">
+    </div>
+    <h5 class="trm-name trm-mb-15">
+        Grant
+    </h5>
+    
+</div>
+<!-- card header end -->
+        <!-- sidebar social -->
+
+<div class="trm-divider trm-mb-40 trm-mt-40"></div>
+<div class="trm-social">
+    
+        <a href="https://github.com/grantingit" title="github" rel="nofollow" target="_blank">
+            <i class="iconfont fab fa-github"></i>
+        </a>
+    
+</div>
+
+<!-- sidebar social end -->
+        <!-- info -->
+<div class="trm-divider trm-mb-40 trm-mt-40"></div>
+<ul class="trm-table trm-mb-20">
+    
+        <li>
+            <div class="trm-label">
+                地址:
+            </div>
+            <div class="trm-label trm-label-light">
+                广东
+            </div>
+        </li>
+    
+        <li>
+            <div class="trm-label">
+                年龄:
+            </div>
+            <div class="trm-label trm-label-light">
+                24
+            </div>
+        </li>
+    
+        <li>
+            <div class="trm-label">
+                邮箱:
+            </div>
+            <div class="trm-label trm-label-light">
+                grant1214@foxmail.com
+            </div>
+        </li>
+    
+</ul>
+<!-- info end -->
+
+        
+    </div>
+</div>
+        </div>
+      
+
+      <div class="trm-page-content col-lg-8">
+        <div id="trm-content" class="trm-content">
+          <div class="trm-post-info row hidden-sm">
+    <div class="col-sm-4">
+        <div class="trm-card trm-label trm-label-light text-center">
+            <i class="iconfont far fa-calendar-alt trm-icon"></i><br>
+            09/18
+        </div>
+    </div>
+    <div class="col-sm-4">
+        <div class="trm-card trm-label trm-label-light text-center">
+            <i class="iconfont far fa-clock trm-icon"></i><br>
+            10:00
+        </div>
+    </div>
+    <div class="col-sm-4">
+        <div id="post-author" class="trm-card trm-label trm-label-light text-center">
+            <i class="iconfont far fa-user trm-icon"></i><br>
+            ruanyf
+        </div>
+    </div>
+</div>
+<div class="trm-card ">
+    <article id="article-container" class="trm-publication">
+    <p>这里记录每周值得分享的科技内容，周五发布。（<strong>[通知] 下周五开始的中秋和十一假期，周刊休息。</strong>）</p>
+<p>本杂志<a target="_blank" rel="noopener" href="https://github.com/ruanyf/weekly">开源</a>，欢迎<a target="_blank" rel="noopener" href="https://github.com/ruanyf/weekly/issues">投稿</a>。另有<a target="_blank" rel="noopener" href="https://github.com/ruanyf/weekly/issues/11434">《谁在招人》</a>服务，发布程序员招聘信息。合作请<a href="mailto:&#121;&#105;&#102;&#x65;&#x6e;&#103;&#46;&#114;&#117;&#x61;&#x6e;&#64;&#x67;&#x6d;&#97;&#x69;&#x6c;&#46;&#x63;&#x6f;&#109;">邮件联系</a>（<a href="mailto:&#121;&#105;&#102;&#x65;&#110;&#103;&#46;&#114;&#x75;&#97;&#110;&#64;&#103;&#x6d;&#97;&#x69;&#x6c;&#46;&#x63;&#111;&#109;">yifeng.ruan@gmail.com</a>）。</p>
+<h2 id="封面图"><a href="#封面图" class="headerlink" title="封面图"></a>封面图</h2><p><img src="https://cdn.beekka.com/blogimg/asset/202609/bg2026091701.webp"  data-tag='post-image' onload='this.onload=null;this.style.opacity=1;' loading="lazy" onerror='this.onerror=null;this.src="/img/404.jpg"'></p>
+<p>华东师范大学闵行校区新启用的西校门，仿造了它的前身之一光华大学的校门。（<a target="_blank" rel="noopener" href="https://www.ecnu.edu.cn/info/1426/73055.htm">via</a>）</p>
+<h2 id="再见了，React-Native"><a href="#再见了，React-Native" class="headerlink" title="再见了，React Native"></a>再见了，React Native</h2><p>Shopify <a target="_blank" rel="noopener" href="https://shopify.engineering/back-to-native">宣布</a>，放弃 React Native，改用 Swift 和 Kotlin 开发它的移动版。</p>
+<p><img src="https://cdn.beekka.com/blogimg/asset/202609/bg2026091307.webp"  data-tag='post-image' onload='this.onload=null;this.style.opacity=1;' loading="lazy" onerror='this.onerror=null;this.src="/img/404.jpg"'></p>
+<p>也就是说，它决定采用原生语言，开发 iOS 和安卓客户端，不再采用 Web 技术开发一个中间版本，再编译成各平台的客户端。</p>
+<p>这不禁让人想起，六年前的2020年，它也是写了<a target="_blank" rel="noopener" href="https://shopify.engineering/react-native-future-mobile-shopify">一篇文章</a>，高调宣布放弃原生语言，全面转向 React Native，拥抱 Web 技术。</p>
+<p>这在当时是一个大新闻，很多人认同 Shopify 选择 Web 技术的三个理由。</p>
+<blockquote>
+<ul>
+<li>不用为每个平台重复开发相同的功能。</li>
+<li>允许开发人员跨技术栈工作。</li>
+<li>多出来的时间和精力，可以用来创造更多的价值。</li>
+</ul>
+</blockquote>
+<p>说实话，这三个理由都是场面话，真正的理由只有一个：省钱。</p>
+<p>当年为了省钱，它选择了 React Native，只需要养一个团队，比起安卓和 iOS 要养两个团队，可以大大节省成本。</p>
+<p>如今放弃 React Native，也是为了省钱。现在有了 AI，使用什么语言根本无所谓。 AI 可以便捷地翻译语言，那么为什么不用性能更好的原生语言呢，跳过中间版本。</p>
+<p>当然，React Native 自己也是不争气。自从2015年发布，迄今已经超过10年，一些基本的技术问题至今没有很好地解决，使用上手也不是很方便。它被别人替代，说实话，一点都不冤。</p>
+<p>总之，AI 就是一个无所不能的自动翻译器，一旦问世，像 React Native 这种中间语言或者翻译层，就被判死刑了，此刻开始退出历史舞台成了必然的结局。</p>
+<h2 id="世界地图的新投影方法"><a href="#世界地图的新投影方法" class="headerlink" title="世界地图的新投影方法"></a>世界地图的新投影方法</h2><p>上周发生了一件大事，联合国投票决定<a target="_blank" rel="noopener" href="https://www.not-ship.com/united-nations-map/">废除</a>墨卡托投影。</p>
+<p>这个决定对各国没有约束力，只是一个标志，表明墨卡托投影真的是过时了，可能需要淘汰。</p>
+<p>我们知道，地球是圆的，地图是平的。这注定了必须采用某种转化方法，才能将球形地貌投影变成平面地图。这也从一个侧面说明，平面地图肯定存在失真。</p>
+<p><img src="https://cdn.beekka.com/blogimg/asset/202609/bg2026091702.webp"  data-tag='post-image' onload='this.onload=null;this.style.opacity=1;' loading="lazy" onerror='this.onerror=null;this.src="/img/404.jpg"'></p>
+<p>上面是目前通行的世界地图，采用了墨卡托投影。</p>
+<p>这种投影相当于把地球仪直接拉伸为矩形，后果就是高纬度地区会被极大拉伸，看上去面积偏大。</p>
+<p>上图中，赤道的非洲看上去跟高纬度的格陵兰岛一样大小。实际上，前者的面积是后者的14倍。</p>
+<p>联合国建议，废除墨卡托投影，<strong>采用新的平等地球投影法（Equal Earth Projection）绘制世界地图</strong>。</p>
+<p>平等地球投影法的核心原则是不改变面积比例。如果一块土地占地球面积1%，那么它占地图面积也应该是1%，所以它的面积比例不会失真。</p>
+<p>代价是，它会根据面积进行拉伸。对于赤道与低纬度地区，南北方向适当纵向拉伸，东西方向适当收缩；对于两极与高纬度地区，东西方向大幅变宽，南北方向大幅变扁。</p>
+<p>所以，这种投影法会造成土地形状失真，长和宽都可能变形，无法使用这种地图进行精确导航。</p>
+<p><img src="https://cdn.beekka.com/blogimg/asset/202609/bg2026091305.webp"  data-tag='post-image' onload='this.onload=null;this.style.opacity=1;' loading="lazy" onerror='this.onerror=null;this.src="/img/404.jpg"'></p>
+<p>上图就是平等地球投影法的世界地图，非洲变大了。</p>
+<p>下面是墨卡托投影和平等地球投影的欧洲和非洲。大家可以比较差异。</p>
+<p><img src="https://cdn.beekka.com/blogimg/asset/202609/bg2026091306.webp"  data-tag='post-image' onload='this.onload=null;this.style.opacity=1;' loading="lazy" onerror='this.onerror=null;this.src="/img/404.jpg"'></p>
+<h2 id="科技动态"><a href="#科技动态" class="headerlink" title="科技动态"></a>科技动态</h2><p>1、<a target="_blank" rel="noopener" href="https://www.chosun.com/english/industry-en/2026/08/30/SBFXUIJQYZEARKP5T4FBAY25HQ/">隐藏摄像头检测器</a></p>
+<p>你是否担心，周围有隐藏摄像头在偷窥你？</p>
+<p>韩国科学家发明了一种装置，可以快速检测周围有没有这种隐藏的摄像头。</p>
+<p>这种装置就是一块电路板，上面有多个发光二极管，会依次点亮，连接手机即可使用，造价很低。</p>
+<p><img src="https://cdn.beekka.com/blogimg/asset/202609/bg2026090101.webp"  data-tag='post-image' onload='this.onload=null;this.style.opacity=1;' loading="lazy" onerror='this.onerror=null;this.src="/img/404.jpg"'></p>
+<p>它的原理是，发光二极管发出的光，会被隐藏的摄像头反射。只要从接收到的反射光里面，排除正常的镜面，就可以确定摄像头的位置。</p>
+<p>那么，如何才能排除其他的反射光呢？这个装置用了一个很巧妙的方法，就是依次亮起不同位置的发光二极管。</p>
+<p>其他的反射光都来自平面镜，只有摄像头的镜面是凸起的透镜，反射光会出现位置偏移。利用不同位置的光源，就可以确定哪些反射光发生了位置偏移，进而确定反射点的位置。</p>
+<p><img src="https://cdn.beekka.com/blogimg/asset/202609/bg2026090102.webp"  data-tag='post-image' onload='this.onload=null;this.style.opacity=1;' loading="lazy" onerror='this.onerror=null;this.src="/img/404.jpg"'></p>
+<p>2、<strong>一句话新闻</strong></p>
+<p>（1）<a target="_blank" rel="noopener" href="https://news.ycombinator.com/item?id=49660072">胡塞武装</a>最近赢得了一场重大胜利，据说使用了史上最匪夷所思的获胜方法。</p>
+<p>他们伪造了对方指挥官的一段音频，指挥官命令部队撤退。他们让一个网红在推特上传播这段假音频，结果对方军队居然真的陷入了混乱，他们就顺利进军，以很小的代价占领了对方的地盘。</p>
+<p>（2）笔记本开始采用固态散热技术，不再需要风扇，通过石墨烯&#x2F;铜箔贴片散热。</p>
+<p>因此，笔记本可以做得极薄、极轻巧。<a target="_blank" rel="noopener" href="https://www.notebookcheck.net/Lenovo-unveils-ThinkBook-AeroBlade-14-inch-laptop-that-weighs-under-830-grams.1388619.0.html">联想</a>最近发布了一款14寸概念笔记本，居然只有830克。华为的14寸笔记本 MateBook Pro S 更是只有798克。</p>
+<p><img src="https://cdn.beekka.com/blogimg/asset/202609/bg2026091201.webp"  data-tag='post-image' onload='this.onload=null;this.style.opacity=1;' loading="lazy" onerror='this.onerror=null;this.src="/img/404.jpg"'></p>
+<p>（3）成都市计划实施“<a target="_blank" rel="noopener" href="https://finance.sina.cn/2026-09-11/detail-inirnhrv2204082.d.html?vt=4">词元券</a>”，企事业单位可以免费申领，你消耗的 Token，政府可以补贴不超过30%的消费金额。</p>
+<p>此外，成都市还计划了“词元贷”，可以向银行贷款消费 Token。</p>
+<h2 id="文章"><a href="#文章" class="headerlink" title="文章"></a>文章</h2><p>1、<a target="_blank" rel="noopener" href="https://vale.rocks/posts/html-boilerplate">我的 HTML 模板文件</a>（英文）</p>
+<p><img src="https://cdn.beekka.com/blogimg/asset/202609/bg2026091303.webp"  data-tag='post-image' onload='this.onload=null;this.style.opacity=1;' loading="lazy" onerror='this.onerror=null;this.src="/img/404.jpg"'></p>
+<p>作者详细介绍了2026年的网页 HTML 模板应该是什么样子，每一行有什么作用。</p>
+<p>2、<a target="_blank" rel="noopener" href="https://css-tricks.com/that-time-i-tried-browsing-the-web-without-css/">如何用 JavaScript 取消 CSS</a>（英文）</p>
+<p><img src="https://cdn.beekka.com/blogimg/asset/202506/bg2025062102.webp"  data-tag='post-image' onload='this.onload=null;this.style.opacity=1;' loading="lazy" onerror='this.onerror=null;this.src="/img/404.jpg"'></p>
+<p>一篇初级教程，教你用 JS 取消网页的 CSS 样式表。</p>
+<p>3、<a target="_blank" rel="noopener" href="https://web.archive.org/web/20250401115923/https://kiranet.org/posts/self-hosting-like-its-2025/">容器管理工具和反向代理工具</a>（英文）</p>
+<p><img src="https://cdn.beekka.com/blogimg/asset/202504/bg2025040105.webp"  data-tag='post-image' onload='this.onload=null;this.style.opacity=1;' loading="lazy" onerror='this.onerror=null;this.src="/img/404.jpg"'></p>
+<p>作者介绍，他如何用容器技术搭建服务器，所使用的技术栈和各种工具。</p>
+<p>4、<a target="_blank" rel="noopener" href="https://stack-auth.com/blog/on-javascripts-weirdness">JavaScript 的怪异之处</a>（英文）</p>
+<p><img src="https://cdn.beekka.com/blogimg/asset/202504/bg2025040501.webp"  data-tag='post-image' onload='this.onload=null;this.style.opacity=1;' loading="lazy" onerror='this.onerror=null;this.src="/img/404.jpg"'></p>
+<p>一篇 JavaScript 的科普文章，介绍一些不太被注意的 JS 语法怪异之处。</p>
+<p>5、<a target="_blank" rel="noopener" href="https://serpapi.com/blog/every-google-udm-in-the-world/">谷歌搜索的 udm 参数</a>（英文）</p>
+<p><img src="https://cdn.beekka.com/blogimg/asset/202506/bg2025062107.webp"  data-tag='post-image' onload='this.onload=null;this.style.opacity=1;' loading="lazy" onerror='this.onerror=null;this.src="/img/404.jpg"'></p>
+<p>谷歌搜索的 url 可以加上一个 udm 参数，用来访问特定类型的结果，比如 udm&#x3D;2 就是返回图像结果。</p>
+<p>6、<a target="_blank" rel="noopener" href="https://www.engineersedge.com/thermodynamics/entropy_explained_with_sheep_15961.htm">熵的解释</a>（英文）</p>
+<p><img src="https://cdn.beekka.com/blogimg/asset/202410/bg2024101406.webp"  data-tag='post-image' onload='this.onload=null;this.style.opacity=1;' loading="lazy" onerror='this.onerror=null;this.src="/img/404.jpg"'></p>
+<p>本篇长文用通俗的语言，解释“熵”的概念，有不少插图。</p>
+<h2 id="工具"><a href="#工具" class="headerlink" title="工具"></a>工具</h2><p>1、<a target="_blank" rel="noopener" href="https://github.com/posit-dev/great-tables">Great Tables</a></p>
+<p><img src="https://cdn.beekka.com/blogimg/asset/202404/bg2024040402.webp"  data-tag='post-image' onload='this.onload=null;this.style.opacity=1;' loading="lazy" onerror='this.onerror=null;this.src="/img/404.jpg"'></p>
+<p>一个可以生成复杂表格的 Python 库。</p>
+<p>2、<a target="_blank" rel="noopener" href="https://github.com/coder/ghostty-web">ghostty-web</a></p>
+<p><img src="https://cdn.beekka.com/blogimg/asset/202512/bg2025120214.webp"  data-tag='post-image' onload='this.onload=null;this.style.opacity=1;' loading="lazy" onerror='this.onerror=null;this.src="/img/404.jpg"'></p>
+<p>这个项目将终端模拟器 <a target="_blank" rel="noopener" href="https://ghostty.org/">Ghostty</a> 编译成 WASM 代码，从而可以在网页里面使用一个全功能的终端。</p>
+<p>3、<a target="_blank" rel="noopener" href="https://github.com/philocalyst/infat">Infat</a></p>
+<p>一个命令行工具，在 Mac 电脑上设置不同后缀名文件的默认打开方法。</p>
+<p>4、<a target="_blank" rel="noopener" href="https://github.com/xdadda/mini-photo-editor">mini-img-editor</a></p>
+<p><img src="https://cdn.beekka.com/blogimg/asset/202504/bg2025042901.webp"  data-tag='post-image' onload='this.onload=null;this.style.opacity=1;' loading="lazy" onerror='this.onerror=null;this.src="/img/404.jpg"'></p>
+<p>一个使用 WebGL 的在线图片编辑器，作为原型演示，界面非常简洁。</p>
+<p>5、<a target="_blank" rel="noopener" href="https://cryptpad.fr/">CryptPad</a></p>
+<p><img src="https://cdn.beekka.com/blogimg/asset/202505/bg2025050101.webp"  data-tag='post-image' onload='this.onload=null;this.style.opacity=1;' loading="lazy" onerror='this.onerror=null;this.src="/img/404.jpg"'></p>
+<p>免费使用的线上 Office 办公套件，支持端对端加密，参见<a target="_blank" rel="noopener" href="https://www.xda-developers.com/reasons-why-use-cryptpad-instead-google-docs/">介绍文章</a>。</p>
+<p>6、<a target="_blank" rel="noopener" href="https://github.com/Yudaotor/lyrimuse">Lyrimuse</a></p>
+<p><img src="https://cdn.beekka.com/blogimg/asset/202609/bg2026091308.webp"  data-tag='post-image' onload='this.onload=null;this.style.opacity=1;' loading="lazy" onerror='this.onerror=null;this.src="/img/404.jpg"'></p>
+<p>macOS 桌面歌词工具，实时查找显示正在播放的歌曲的歌词。（<a target="_blank" rel="noopener" href="https://github.com/ruanyf/weekly/issues/11551">@Yudaotor</a> 投稿）</p>
+<p>7、<a target="_blank" rel="noopener" href="https://github.com/renezander030/capcut-cli">capcut-cli</a></p>
+<p><img src="https://cdn.beekka.com/blogimg/asset/202609/bg2026091619.webp"  data-tag='post-image' onload='this.onload=null;this.style.opacity=1;' loading="lazy" onerror='this.onerror=null;this.src="/img/404.jpg"'></p>
+<p>剪映（capcut）的非官方命令行工具，在终端里面创建&#x2F;编辑视频。（<a target="_blank" rel="noopener" href="https://github.com/ruanyf/weekly/issues/11634">@renezander030</a> 投稿）</p>
+<p>8、<a target="_blank" rel="noopener" href="https://github.com/mailez-hq/mailez">mailez</a></p>
+<p><img src="https://cdn.beekka.com/blogimg/asset/202609/bg2026091621.webp"  data-tag='post-image' onload='this.onload=null;this.style.opacity=1;' loading="lazy" onerror='this.onerror=null;this.src="/img/404.jpg"'></p>
+<p>一个 Go 语言的二进制文件，实现自托管邮件系统，网页收发邮件，支持 SMTP &#x2F; IMAP &#x2F; POP3 &#x2F; ManageSieve 四个协议。（<a target="_blank" rel="noopener" href="https://github.com/ruanyf/weekly/issues/11680">@lianguan</a> 投稿）</p>
+<p>9、<a target="_blank" rel="noopener" href="https://github.com/lingyired/status-trio">Status Trio</a></p>
+<p><img src="https://cdn.beekka.com/blogimg/asset/202609/bg2026091622.webp"  data-tag='post-image' onload='this.onload=null;this.style.opacity=1;' loading="lazy" onerror='this.onerror=null;this.src="/img/404.jpg"'></p>
+<p>一款借鉴 iPhone Duo 设计的三合一 Mac 状态栏图标，集成 Wi‑Fi 、电池与音量。（<a target="_blank" rel="noopener" href="https://github.com/ruanyf/weekly/issues/11670">@lingyired</a> 投稿）</p>
+<p>10、<a target="_blank" rel="noopener" href="https://github.com/EvanZhouDev/polycompiler">Polycompiler</a></p>
+<p>一个有意思的项目，可以把 JS 脚本和 Python 脚本打包成一个脚本，同时能在 JS 环境和 Python 环境运行。</p>
+<h2 id="资源"><a href="#资源" class="headerlink" title="资源"></a>资源</h2><p>1、<a target="_blank" rel="noopener" href="https://gpcb.net/net/">gpcb.net</a></p>
+<p><img src="https://cdn.beekka.com/blogimg/asset/202609/bg2026091620.webp"  data-tag='post-image' onload='this.onload=null;this.style.opacity=1;' loading="lazy" onerror='this.onerror=null;this.src="/img/404.jpg"'></p>
+<p>网络设备拓扑图的网页设计工具。（<a target="_blank" rel="noopener" href="https://github.com/ruanyf/weekly/issues/11622">@abpyu</a> 投稿）</p>
+<p>2、<a target="_blank" rel="noopener" href="https://visualstyles.jerrymakes.com/">视觉风格图鉴</a></p>
+<p><img src="https://cdn.beekka.com/blogimg/asset/202609/bg2026091309.webp"  data-tag='post-image' onload='this.onload=null;this.style.opacity=1;' loading="lazy" onerror='this.onerror=null;this.src="/img/404.jpg"'></p>
+<p>用一颗苹果，展示100多种视觉风格，比如上图是霓虹风格的苹果。（<a target="_blank" rel="noopener" href="https://github.com/ruanyf/weekly/issues/11555">@jerrymakes</a> 投稿）</p>
+<p>3、<a target="_blank" rel="noopener" href="https://store.xiu.ai/zh/ai-ip/">AI IP 检测</a></p>
+<p><img src="https://cdn.beekka.com/blogimg/asset/202609/bg2026091407.webp"  data-tag='post-image' onload='this.onload=null;this.style.opacity=1;' loading="lazy" onerror='this.onerror=null;this.src="/img/404.jpg"'></p>
+<p>这个网站显示你连接 Claude、ChatGPT、Grok、Perplexity、Cloudflare 时，实际连接的 IP 地址。（<a target="_blank" rel="noopener" href="https://github.com/ruanyf/weekly/issues/11571">@MuduiClaw</a> 投稿）</p>
+<p>4、<a target="_blank" rel="noopener" href="https://qunabu.github.io/Gravity/#what-is-gravity">引力</a>（Gravity）</p>
+<p><img src="https://cdn.beekka.com/blogimg/asset/202606/bg2026062007.webp"  data-tag='post-image' onload='this.onload=null;this.style.opacity=1;' loading="lazy" onerror='this.onerror=null;this.src="/img/404.jpg"'></p>
+<p>一个网页的多媒体教程，向观众介绍万有引力的相关知识。</p>
+<h2 id="图片"><a href="#图片" class="headerlink" title="图片"></a>图片</h2><p>1、<a target="_blank" rel="noopener" href="https://www.instagram.com/p/DJPerYryd3P/">F-35 头盔</a></p>
+<p>世界最贵的头盔是美国战斗机 F-35 的飞行员头盔，价值40万美元一个（约人民币300万）。</p>
+<p><img src="https://cdn.beekka.com/blogimg/asset/202505/bg2025050905.webp"  data-tag='post-image' onload='this.onload=null;this.style.opacity=1;' loading="lazy" onerror='this.onerror=null;this.src="/img/404.jpg"'></p>
+<p>它那么贵的原因，在于可以连接飞机的传感器，接受和处理各种数据。</p>
+<p><img src="https://cdn.beekka.com/blogimg/asset/202505/bg2025050906.webp"  data-tag='post-image' onload='this.onload=null;this.style.opacity=1;' loading="lazy" onerror='this.onerror=null;this.src="/img/404.jpg"'></p>
+<p>它内置一个360度显示屏，为飞行员提供夜视、飞行数据（下图）。</p>
+<p><img src="https://cdn.beekka.com/blogimg/asset/202505/bg2025050907.webp"  data-tag='post-image' onload='this.onload=null;this.style.opacity=1;' loading="lazy" onerror='this.onerror=null;this.src="/img/404.jpg"'></p>
+<p>每个头盔都是 3D 扫描定制的，由碳纤维、凯夫拉纤维和各种光学元件制成。</p>
+<p>2、<a target="_blank" rel="noopener" href="https://www.twz.com/news-features/the-story-of-the-monster-mi-6-helicopter-airliner">苏联 Mi-6 直升机</a></p>
+<p>苏联的航空公司曾经设想，使用直升机运送乘客。</p>
+<p>上个世纪60年代，他们生产了一种当时世界上最大的直升机 Mi-6，可以乘坐80名乘客。</p>
+<p><img src="https://cdn.beekka.com/blogimg/asset/202407/bg2024071115.webp"  data-tag='post-image' onload='this.onload=null;this.style.opacity=1;' loading="lazy" onerror='this.onerror=null;this.src="/img/404.jpg"'></p>
+<p><img src="https://cdn.beekka.com/blogimg/asset/202407/bg2024071116.webp"  data-tag='post-image' onload='this.onload=null;this.style.opacity=1;' loading="lazy" onerror='this.onerror=null;this.src="/img/404.jpg"'></p>
+<p>它长约33米，高10米。内部每排可以坐5个人，甚至还有厕所。</p>
+<p><img src="https://cdn.beekka.com/blogimg/asset/202407/bg2024071117.webp"  data-tag='post-image' onload='this.onload=null;this.style.opacity=1;' loading="lazy" onerror='this.onerror=null;this.src="/img/404.jpg"'></p>
+<p>这种飞机只造过一架，用来运送乘客到苏联东部地区，进行石油和天然气工作。</p>
+<p><img src="https://cdn.beekka.com/blogimg/asset/202407/bg2024071118.webp"  data-tag='post-image' onload='this.onload=null;this.style.opacity=1;' loading="lazy" onerror='this.onerror=null;this.src="/img/404.jpg"'></p>
+<h2 id="文摘"><a href="#文摘" class="headerlink" title="文摘"></a>文摘</h2><p>1、<a target="_blank" rel="noopener" href="https://underreacted.leaflet.pub/3mdjygm2p5s2c">糊状千层面</a></p>
+<p>实话实说，现实中，大多数程序员的代码其实都很糟糕。</p>
+<p>但是，糟糕的垃圾也分等级。一种情况是代码就像意大利面条（Spaghetti code），乱成一团，根本理不清。</p>
+<p><img src="https://cdn.beekka.com/blogimg/asset/202609/bg2026090704.webp"  data-tag='post-image' onload='this.onload=null;this.style.opacity=1;' loading="lazy" onerror='this.onerror=null;this.src="/img/404.jpg"'></p>
+<p>好一点的情况是“<a target="_blank" rel="noopener" href="https://underreacted.leaflet.pub/3mdjygm2p5s2c">糊状千层面</a>”（slop lasagna）。这种代码也是糊在一起，但分成了很多层，至少可以按着层把它分开。</p>
+<p><img src="https://cdn.beekka.com/blogimg/asset/202609/bg2026090703.webp"  data-tag='post-image' onload='this.onload=null;this.style.opacity=1;' loading="lazy" onerror='this.onerror=null;this.src="/img/404.jpg"'></p>
+<p>即使无法写出优秀出众的代码，<strong>你也要尽量避免意大利面式代码，争取写出千层面式代码</strong>。</p>
+<p>一个实例就是 React 框架，它把代码拆分成组件，这样的好处就是，哪怕每个组件都是垃圾代码，至少可以单独替换某个组件。</p>
+<p>删除组件、复制组件、内联组件、重写组件都是很容易的操作。因为组件之间是分离的，它让你只需关注<strong>单个组件</strong>的内部代码。</p>
+<p>只要你的组件树的设计是合理的，那么单个组件内部的具体代码就无关紧要。某人写了一个10000行的垃圾组件，哪有什么关系呢，最终有人会重写它，它影响不到代码库的其他部分。</p>
+<p><strong>只要代码是千层面结构，那么单独一层很糟糕，并不影响全局</strong>。</p>
+<p>真正重要的是下面的事情。</p>
+<p>（1）数据如何在系统中流动，当前的数据从哪里输入，又输出了什么，以及你存储了哪些数据。</p>
+<p>（2）用户体验如何，有没有明显的漏洞、糟糕的性能、前后不一致的行为。</p>
+<p>（3）基本的抽象概念是否正确，有没有误用。</p>
+<p><strong>只要上面三点 OK ，代码又是组件式的可抽换结构，那么程序就没有大的问题</strong>。这时，某个组件是否冗长、写得好不好、是否简洁合理，有没有小 Bug，其实无关大局。</p>
+<h2 id="言论"><a href="#言论" class="headerlink" title="言论"></a>言论</h2><p>1、</p>
+<p>卫星会消耗行星的自转能量，从而加速行星的毁灭。</p>
+<p>– <a target="_blank" rel="noopener" href="https://www.space.com/astronomy/venus/did-venus-eat-its-own-moon">《金星吞噬了自己的卫星吗》</a></p>
+<p>2、</p>
+<p>想象两家非常相似的软件公司，收入相似，软件产品也相似。它们唯一的区别是，A 公司使用了 100 万行代码，而 B 公司使用了 10 万行代码。哪家公司会表现更好 ？</p>
+<p>显然，代码行数只有别人十分之一的公司会表现更好。代码行数越少，就能更快地理解和修改代码。</p>
+<p>– <a target="_blank" rel="noopener" href="https://tornikeo.com/code-is-debt/">《代码就是债务》</a></p>
+<p>3、</p>
+<p>大模型会将你从一个编写代码的程序员，转变为一个管理上下文、剔除无关信息、编写详细提示词的程序员。</p>
+<p>– <a target="_blank" rel="noopener" href="https://simonwillison.net/2025/Dec/30/liz-fong-jones/">Liz Fong-Jones</a></p>
+<p>4、</p>
+<p>一位创始人，如果在2024年组建了合适的团队却打造了错误的产品，那么坚持到2027年，他的团队就会变成久经沙场的团队，很可能打造出正确的产品。</p>
+<p>失败带来的经验，就像根系中的养分被储存起来，等待下一个春天的到来，而不是白白浪费。</p>
+<p>– <a target="_blank" rel="noopener" href="https://ceodinner.substack.com/p/the-ai-wildfire-is-coming-its-going">《AI 不会崩溃，但会经历一场风暴》</a></p>
+<p>5、</p>
+<p>很多技术出错，并不是太大的问题。GPS 出错，我很快会发现地点不对；Netflix 推荐的电影不好看，我就不看了。</p>
+<p>但 AI 就不同了，它越先进，就越难知道它是否出错，因为我们会用 AI 去完成那些我们自己无法完成、也无法验证的任务。</p>
+<p>一旦 AI 出错，我们只能不停召唤更强大 的 AI，希望咒语能够奏效。欢迎来到魔法师时代。</p>
+<p>– <a target="_blank" rel="noopener" href="https://www.oneusefulthing.org/p/on-working-with-wizards">《AI 就是与魔法师合作》</a></p>
+<h2 id="往年回顾"><a href="#往年回顾" class="headerlink" title="往年回顾"></a>往年回顾</h2><p><a target="_blank" rel="noopener" href="https://www.ruanyifeng.com/blog/2025/09/weekly-issue-366.html">旧金山疯狂的 AI 广告</a>（#366）</p>
+<p><a target="_blank" rel="noopener" href="https://www.ruanyifeng.com/blog/2024/09/weekly-issue-316.html">你一生的故事</a>（#316）</p>
+<p><a target="_blank" rel="noopener" href="https://www.ruanyifeng.com/blog/2023/08/weekly-issue-266.html">自己做双语 EPUB 电子书</a>（#266）</p>
+<p><a target="_blank" rel="noopener" href="https://www.ruanyifeng.com/blog/2022/07/weekly-issue-216.html">极简主义的胜利</a>（#216）</p>
+<p>（完）</p>
+
+</article>
+    
+    
+
+</div>
+
+
+
+<div class="trm-post-next-prev row">
+  <div class="col-lg-12">
+    <h5 class="trm-title-with-divider">
+      其他文章
+      <span data-number="02"></span>
+    </h5>
+  </div>
+  
+    <div class="col-lg-6">
+    <div class="trm-older-publications-card trm-scroll-animation trm-active-el">
+        <div class="trm-older-publication">
+            
+            <a class="trm-op-top trm-anima-link" href="/issue-412/">
+                <span class="trm-op-cover">
+                    <img alt="cover" class="no-fancybox" src="/issue-412/img/cover.jpg">
+                </span>
+                <h6 class="trm-op-title">科技爱好者周刊（第 412 期）：禁止 issue，只用 PR</h6>
+            </a>
+            <div class="trm-divider trm-mb-15 trm-mt-20"></div>
+            <ul class="trm-card-data trm-label">
+                <li>26/09/11</li>
+                <li>10:00</li>
+                <li>资讯</li>
+            </ul>
+        </div>
+    </div>
+</div>
+  
+    <div class="col-lg-6">
+    <div class="trm-older-publications-card trm-scroll-animation trm-active-el">
+        <div class="trm-older-publication">
+            
+            <a class="trm-op-top trm-anima-link" href="/issue-411/">
+                <span class="trm-op-cover">
+                    <img alt="cover" class="no-fancybox" src="/issue-411/img/cover.jpg">
+                </span>
+                <h6 class="trm-op-title">科技爱好者周刊（第 411 期）：OpenClaw 2.0 是一个缩影</h6>
+            </a>
+            <div class="trm-divider trm-mb-15 trm-mt-20"></div>
+            <ul class="trm-card-data trm-label">
+                <li>26/09/04</li>
+                <li>10:00</li>
+                <li>资讯</li>
+            </ul>
+        </div>
+    </div>
+</div>
+  
+</div>
+
+
+
+    
+
+
+        </div>
+      </div>
+    </div>
+
+    <div class="trm-divider footer-divider"></div>
+    <footer class="trm-footer-card trm-scroll-animation">
+
+    
+
+    
+        <div class="trm-footer-item">
+            <span>© 2026 - 2026</span>
+            <span class="footer-separator"data-separator=" · "></span>
+            <span class="trm-accent-color">Grant</span>
+        </div>
+    
+
+    
+        <div class="trm-footer-item">
+            <span>
+                由 <a href="https://hexo.io" target="_blank" rel="noopener">Hexo</a> 驱动 v8.1.2
+            </span>
+            <span class="footer-separator" data-separator=" | "></span>
+            <span> 
+                主题 - 
+                <a rel="noopener" href='https://github.com/MaLuns/hexo-theme-async' target='_blank'>Async</a>
+                v2.2.7
+            </span>
+        </div>
+      
+
+     
+
+    
+        <div class="trm-footer-item">
+            已经到底了。
+        </div>
+     
+</footer>
+  </div>
+</div>
+
+            <!-- body end -->
+
+            
+
+    <div id="post-toc" class="trm-post-toc">
+      <div class="trm-post-toc-header">
+        目录导航
+				<span id="post-toc-top">
+					置顶
+				</span>
+      </div>
+      <div class="trm-post-toc-content">
+        <ol class="trm-toc"><li class="trm-toc-item trm-toc-level-2" title="封面图"><a rel="nofollow" class="trm-toc-link" href="#封面图"><span class="trm-toc-number">1.</span> <span class="trm-toc-text">封面图</span></a></li><li class="trm-toc-item trm-toc-level-2" title="再见了，React Native"><a rel="nofollow" class="trm-toc-link" href="#再见了，React-Native"><span class="trm-toc-number">2.</span> <span class="trm-toc-text">再见了，React Native</span></a></li><li class="trm-toc-item trm-toc-level-2" title="世界地图的新投影方法"><a rel="nofollow" class="trm-toc-link" href="#世界地图的新投影方法"><span class="trm-toc-number">3.</span> <span class="trm-toc-text">世界地图的新投影方法</span></a></li><li class="trm-toc-item trm-toc-level-2" title="科技动态"><a rel="nofollow" class="trm-toc-link" href="#科技动态"><span class="trm-toc-number">4.</span> <span class="trm-toc-text">科技动态</span></a></li><li class="trm-toc-item trm-toc-level-2" title="文章"><a rel="nofollow" class="trm-toc-link" href="#文章"><span class="trm-toc-number">5.</span> <span class="trm-toc-text">文章</span></a></li><li class="trm-toc-item trm-toc-level-2" title="工具"><a rel="nofollow" class="trm-toc-link" href="#工具"><span class="trm-toc-number">6.</span> <span class="trm-toc-text">工具</span></a></li><li class="trm-toc-item trm-toc-level-2" title="资源"><a rel="nofollow" class="trm-toc-link" href="#资源"><span class="trm-toc-number">7.</span> <span class="trm-toc-text">资源</span></a></li><li class="trm-toc-item trm-toc-level-2" title="图片"><a rel="nofollow" class="trm-toc-link" href="#图片"><span class="trm-toc-number">8.</span> <span class="trm-toc-text">图片</span></a></li><li class="trm-toc-item trm-toc-level-2" title="文摘"><a rel="nofollow" class="trm-toc-link" href="#文摘"><span class="trm-toc-number">9.</span> <span class="trm-toc-text">文摘</span></a></li><li class="trm-toc-item trm-toc-level-2" title="言论"><a rel="nofollow" class="trm-toc-link" href="#言论"><span class="trm-toc-number">10.</span> <span class="trm-toc-text">言论</span></a></li><li class="trm-toc-item trm-toc-level-2" title="往年回顾"><a rel="nofollow" class="trm-toc-link" href="#往年回顾"><span class="trm-toc-number">11.</span> <span class="trm-toc-text">往年回顾</span></a></li></ol>
+      </div>
+    </div>
+
+            
+<div class="trm-fixed-container">
+    
+        <div class="trm-fixed-btn post-toc-btn" data-title="目录">
+            <i class="iconfont fas fa-th-list"></i>
+        </div>
+    
+    
+        <div class="trm-fixed-btn" data-title="阅读模式" onclick="asyncFun.switchReadMode()">
+            <i class="iconfont fas fa-book-reader"></i>
+        </div>
+    
+    
+    <div id="trm-back-top" class="trm-fixed-btn" data-title="回到顶部">
+        <i class="iconfont fas fa-arrow-up"></i>
+    </div>
+</div>
+        </div>
+      </div>
+      <!-- scroll container end -->
+  </div>
+  <!-- app wrapper end -->
+
+  
+    <div class="trm-search-popup">
+        <div class="trm-search-wrapper">
+            <div class="form trm-search-form">
+                <div class="trm-search-input-icon">
+                    <i class="iconfont fas fa-search"></i>
+                </div>
+                <input class="trm-search-input" type="text" placeholder="搜索文章...">
+                <div class="trm-search-btn-close">
+                    <i class="iconfont fas fa-times"></i>
+                </div>
+            </div>
+            <div class="trm-search-result-container">
+                <div class="trm-search-empty">
+                    请输入关键词进行搜索
+                </div>
+            </div>
+            <div class="trm-search-footer">
+                <div class="trm-search-stats"></div>
+                <ul class="trm-search-commands">
+                    <li>
+                        <kbd class="command-palette-commands-key">
+                            <svg width="15" height="15" aria-label="Escape key" role="img">
+                                <g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                    stroke-width="1.2">
+                                    <path
+                                        d="M13.6167 8.936c-.1065.3583-.6883.962-1.4875.962-.7993 0-1.653-.9165-1.653-2.1258v-.5678c0-1.2548.7896-2.1016 1.653-2.1016.8634 0 1.3601.4778 1.4875 1.0724M9 6c-.1352-.4735-.7506-.9219-1.46-.8972-.7092.0246-1.344.57-1.344 1.2166s.4198.8812 1.3445.9805C8.465 7.3992 8.968 7.9337 9 8.5c.032.5663-.454 1.398-1.4595 1.398C6.6593 9.898 6 9 5.963 8.4851m-1.4748.5368c-.2635.5941-.8099.876-1.5443.876s-1.7073-.6248-1.7073-2.204v-.4603c0-1.0416.721-2.131 1.7073-2.131.9864 0 1.6425 1.031 1.5443 2.2492h-2.956">
+                                    </path>
+                                </g>
+                            </svg>
+                        </kbd>
+                        <span class="command-palette-Label">to close</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+  <!-- Plugin -->
+
+
+
+
+    
+    
+<script src="https://unpkg.com/@fancyapps/ui@4.0/dist/fancybox.umd.js"></script>
+
+    
+
+    
+
+    
+        
+<script src="https://unpkg.com/hexo-generator-searchdb@1.4.0/dist/search.js"></script>
+
+        <script src="/js/plugins/local_search.js?v=2.2.7"></script>
+    
+
+    <!-- 数学公式 -->
+    
+
+    <!-- 评论插件 -->
+    
+        
+
+        
+    
+
+		
+
+
+
+
+    <!-- Service Worker -->
+    
+    <!-- baidu push -->
+    
+
+
+<script id="async-script" src="/js/main.js?v=2.2.7"></script>
+
+<!-- CDN -->
+
+
+    
+
+    
+
+    
+
+
+
+</body>
+
+</html>
