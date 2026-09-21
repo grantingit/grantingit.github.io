@@ -168,7 +168,7 @@
     
     
         <div class="trm-logo-text">
-            Grant&#39;s<span>blog</span>
+            Grant&#39;s blog<span></span>
         </div>
     
 </a>
@@ -235,59 +235,82 @@
             <!-- body -->
             
 <div class="trm-content-start">
-  <div class="trm-banner">
-    
-    <!-- banner cover -->
+  
+
+<div class="trm-banner">
+  
     <img style="object-position:top;object-fit:cover;" alt="banner" class="trm-banner-cover" src="/issue-411/img/cover.jpg">
-    <!-- banner cover end -->
-    
+  
 
-    <!-- banner content -->
-    <div class="trm-banner-content trm-overlay">
-        <div class="container">
-            <div class="row">
-                
-                <div class="col-lg-4"></div>
-                
-                <div class="col-lg-8">
-
-                    <!-- banner title -->
-                    <div class="trm-banner-text ">
-                        <div class="trm-label trm-mb-20">
-                            NEWS LETTER
-                        </div>
-                        <h1 class="trm-mb-30 trm-hsmb-font">
-                            科技爱好者周刊（第 411 期）：OpenClaw 2.0 是一个缩影
-                        </h1>
-
-                        
-                            <ul class="trm-breadcrumbs trm-label">
-                                <li>
-                                    <a href="/" class="trm-anima-link">Home</a>
-                                </li>
-                                <li>
-                                    <span>
-                                        issue-411
-                                    </span>
-                                </li>
-                            </ul>
-                        
-                    </div>
-                    <!-- banner title end -->
-
-                    <!-- scroll hint -->
-                    <span id="scroll-triger" class="trm-scroll-hint-frame">
-                        <div class="trm-scroll-hint"></div>
-                        <span class="trm-label">Scroll down</span>
-                    </span>
-                    <!-- scroll hint end -->
-
-                </div>
+  <div class="trm-banner-content trm-overlay">
+    <div class="container">
+      <div class="row">
+        
+          <div class="col-lg-4"></div>
+        
+        <div class="col-lg-8">
+          <div class="trm-banner-text">
+            <div class="trm-label trm-mb-20">
+              NEWS LETTER
             </div>
+            <h1 class="trm-mb-30 trm-hsmb-font trm-banner-title">
+              科技爱好者周刊（第 411 期）：OpenClaw 2.0 是一个缩影
+            </h1>
+
+            
+          </div>
         </div>
+      </div>
     </div>
-    <!-- banner content end -->
+  </div>
 </div>
+
+<script>
+(function () {
+  var fitBannerTitles = function () {
+    document.querySelectorAll('.trm-banner-title').forEach(function (title) {
+      title.style.removeProperty('font-size');
+      title.style.removeProperty('display');
+      title.style.removeProperty('-webkit-line-clamp');
+      title.style.removeProperty('-webkit-box-orient');
+      title.style.removeProperty('overflow');
+
+      if (window.innerWidth > 768) return;
+
+      var getLineCount = function () {
+        var range = document.createRange();
+        range.selectNodeContents(title);
+        return Array.from(range.getClientRects()).filter(function (rect) {
+          return rect.height > 0;
+        }).length;
+      };
+      var size = Number.parseFloat(window.getComputedStyle(title).fontSize);
+
+      while (getLineCount() > 2 && size > 16) {
+        size -= 1;
+        title.style.fontSize = size + 'px';
+      }
+
+      if (getLineCount() > 2) {
+        title.style.display = '-webkit-box';
+        title.style.webkitLineClamp = '2';
+        title.style.webkitBoxOrient = 'vertical';
+        title.style.overflow = 'hidden';
+      }
+    });
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', fitBannerTitles, { once: true });
+  } else {
+    fitBannerTitles();
+  }
+
+  window.addEventListener('resize', fitBannerTitles);
+  document.addEventListener('swup:contentReplaced', fitBannerTitles);
+})();
+</script>
+
 
   <div class="container">
     <div class="row trm-page-layout">
@@ -321,34 +344,34 @@
         <!-- info -->
 <div class="trm-divider trm-mb-40 trm-mt-40"></div>
 <ul class="trm-table trm-mb-20">
-    
-        <li>
-            <div class="trm-label">
-                地址:
-            </div>
-            <div class="trm-label trm-label-light">
-                广东
-            </div>
-        </li>
-    
-        <li>
-            <div class="trm-label">
-                年龄:
-            </div>
-            <div class="trm-label trm-label-light">
-                24
-            </div>
-        </li>
-    
-        <li>
-            <div class="trm-label">
-                邮箱:
-            </div>
-            <div class="trm-label trm-label-light">
-                grant1214@foxmail.com
-            </div>
-        </li>
-    
+  
+    <li>
+      <div class="trm-label">
+        地址:
+      </div>
+      <div class="trm-label trm-label-light">
+        广东
+      </div>
+    </li>
+  
+    <li>
+      <div class="trm-label">
+        年龄:
+      </div>
+      <div class="trm-label trm-label-light">
+        24
+      </div>
+    </li>
+  
+    <li>
+      <div class="trm-label">
+        邮箱:
+      </div>
+      <div class="trm-label trm-label-light">
+        grant1214@foxmail.com
+      </div>
+    </li>
+  
 </ul>
 <!-- info end -->
 
@@ -383,7 +406,7 @@
 <div class="trm-card ">
     <article id="article-container" class="trm-publication">
     <p>这里记录每周值得分享的科技内容，周五发布。</p>
-<p>本杂志<a target="_blank" rel="noopener" href="https://github.com/ruanyf/weekly">开源</a>，欢迎<a target="_blank" rel="noopener" href="https://github.com/ruanyf/weekly/issues">投稿</a>。另有<a target="_blank" rel="noopener" href="https://github.com/ruanyf/weekly/issues/11434">《谁在招人》</a>服务，发布程序员招聘信息。合作请<a href="mailto:&#121;&#x69;&#x66;&#x65;&#x6e;&#103;&#46;&#x72;&#x75;&#97;&#110;&#x40;&#103;&#109;&#x61;&#x69;&#x6c;&#46;&#99;&#111;&#x6d;">邮件联系</a>（<a href="mailto:&#121;&#105;&#102;&#x65;&#110;&#103;&#x2e;&#x72;&#x75;&#97;&#x6e;&#64;&#x67;&#109;&#x61;&#x69;&#108;&#x2e;&#99;&#x6f;&#x6d;">yifeng.ruan@gmail.com</a>）。</p>
+<p>本杂志<a target="_blank" rel="noopener" href="https://github.com/ruanyf/weekly">开源</a>，欢迎<a target="_blank" rel="noopener" href="https://github.com/ruanyf/weekly/issues">投稿</a>。另有<a target="_blank" rel="noopener" href="https://github.com/ruanyf/weekly/issues/11434">《谁在招人》</a>服务，发布程序员招聘信息。合作请<a href="mailto:&#x79;&#x69;&#102;&#101;&#x6e;&#x67;&#x2e;&#x72;&#x75;&#x61;&#110;&#64;&#103;&#x6d;&#97;&#x69;&#x6c;&#46;&#99;&#111;&#109;">邮件联系</a>（<a href="mailto:&#x79;&#x69;&#102;&#101;&#x6e;&#103;&#46;&#x72;&#x75;&#97;&#110;&#x40;&#103;&#109;&#x61;&#x69;&#x6c;&#x2e;&#99;&#111;&#x6d;">yifeng.ruan@gmail.com</a>）。</p>
 <h2 id="封面图"><a href="#封面图" class="headerlink" title="封面图"></a>封面图</h2><p><img src="https://cdn.beekka.com/blogimg/asset/202608/bg2026082702.webp"  data-tag='post-image' onload='this.onload=null;this.style.opacity=1;' loading="lazy" onerror='this.onerror=null;this.src="/img/404.jpg"'></p>
 <p>宁夏西夏陵使用金属网，将残片还原成石像生。（<a target="_blank" rel="noopener" href="https://news.ifeng.com/c/8vTLFjHaN2k">via</a>）</p>
 <h2 id="OpenClaw-2-0-是一个缩影"><a href="#OpenClaw-2-0-是一个缩影" class="headerlink" title="OpenClaw 2.0 是一个缩影"></a>OpenClaw 2.0 是一个缩影</h2><p>本周，OpenClaw 发布了<a target="_blank" rel="noopener" href="https://openclaw.ai/blog/openclaw-2-accidentally">2.0版</a>。</p>

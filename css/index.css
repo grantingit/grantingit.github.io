@@ -3913,6 +3913,14 @@ pre .coffeescript .title {
 #scroll-triger {
   display: none !important;
 }
+@media (min-width: 993px) {
+  .trm-content-start > .trm-banner {
+    width: auto;
+    margin-left: -40px;
+    margin-right: -40px;
+    border-radius: 0;
+  }
+}
 .trm-home-layout .trm-main-card,
 .trm-page-layout .trm-main-card {
   height: auto;
@@ -3920,6 +3928,32 @@ pre .coffeescript .title {
 }
 .trm-main-card-frame.fixed .trm-main-card {
   border-radius: var(--card-border-radius, 10px) !important;
+}
+.trm-main-card-frame .trm-main-card .trm-table li {
+  flex-wrap: wrap;
+  align-items: flex-start;
+}
+.trm-main-card-frame .trm-main-card .trm-table li > .trm-label:first-child {
+  flex: 0 0 auto;
+  white-space: nowrap;
+}
+.trm-main-card-frame .trm-main-card .trm-table li > .trm-label:last-child {
+  flex: 0 1 auto;
+  min-width: 0;
+  margin-left: auto;
+  text-align: right;
+  text-transform: none;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
+.trm-main-card-frame .trm-main-card .trm-table li > .trm-info-value-long {
+  flex: 1 0 100%;
+  margin-top: 4px;
+  margin-left: 0;
+  text-align: left;
+}
+#post-author {
+  text-transform: none;
 }
 @media (max-width: 992px) {
   .trm-page-sidebar {

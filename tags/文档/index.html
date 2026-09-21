@@ -60,7 +60,7 @@
 
 <!-- Variable -->
 <script>window.ASYNC_CONFIG = {"hostname":"grantingit.github.io","author":"Grant","root":"/","typed_text":null,"theme_version":"2.2.7","theme":{"switch":true,"default":"auto"},"favicon":{"logo":"/img/favicon.svg","icon16":"/img/favicon.svg","icon32":"/img/favicon.svg","apple_touch_icon":null,"webmanifest":null,"visibilitychange":false,"hidden":"/failure.ico","show_text":"(/≧▽≦/)咦！又好了！","hide_text":"(●—●)喔哟，崩溃啦！","dark_loge":null},"i18n":{"placeholder":"搜索文章...","empty":"找不到您查询的内容: ${query}","hits":"找到 ${hits} 条结果","hits_time":"找到 ${hits} 条结果（用时 ${time} 毫秒）","author":"本文作者：","copyright_link":"本文链接：","copyright_license_title":"版权声明：","copyright_license_content":"本博客所有文章除特别声明外，均默认采用 undefined 许可协议。","copy_success":"复制成功","copy_failure":"复制失败","open_read_mode":"进入阅读模式","exit_read_mode":"退出阅读模式","notice_outdate_message":"距离上次更新已经 undefined 天了, 文章内容可能已经过时。","sticky":"置顶","just":"刚刚","min":"分钟前","hour":"小时前","day":"天前","month":"个月前"},"swup":false,"plugin":{"flickr_justified_gallery":"https://unpkg.com/flickr-justified-gallery@latest/dist/fjGallery.min.js"},"icons":{"sun":"far fa-sun","moon":"far fa-moon","play":"fas fa-play","email":"far fa-envelope","next":"fas fa-arrow-right","calendar":"far fa-calendar-alt","clock":"far fa-clock","user":"far fa-user","back_top":"fas fa-arrow-up","close":"fas fa-times","search":"fas fa-search","reward":"fas fa-hand-holding-usd","toc_tag":"fas fa-th-list","read":"fas fa-book-reader","arrows":"fas fa-arrows-alt-h","double_arrows":"fas fa-angle-double-down","copy":"fas fa-copy","user_tag":"fas fa-user-alt"},"icontype":"font","highlight":{"plugin":"highlighjs","theme":true,"copy":true,"lang":true,"title":"default","height_limit":200},"toc":{"post_title":false},"live_time":{"start_time":"","prefix":"博客已萌萌哒运行 undefined 天"},"danmu":{"enable":false,"el":".trm-banner"},"search":{"enable":true,"type":"local","href":"https://www.google.com/search?q=site:","domain":null,"path":"search.json"}};</script>
-<script id="async-page-config">window.PAGE_CONFIG = {"isPost":false,"isHome":false,"postUpdate":"2026-09-21 13:57:17"};</script>
+<script id="async-page-config">window.PAGE_CONFIG = {"isPost":false,"isHome":false,"postUpdate":"2026-09-21 17:29:45"};</script>
 
 <!-- Theme mode css -->
 <link data-swup-theme rel="stylesheet" href="/css/index.css?v=2.2.7" id="trm-switch-style">
@@ -132,7 +132,7 @@
     
     
         <div class="trm-logo-text">
-            Grant&#39;s<span>blog</span>
+            Grant&#39;s blog<span></span>
         </div>
     
 </a>
@@ -200,59 +200,82 @@
             
 
 <div class="trm-content-start">
-  <div class="trm-banner">
-    
-    <!-- banner cover -->
+  
+
+<div class="trm-banner">
+  
     <img style="object-position:top;object-fit:cover;" alt="banner" class="trm-banner-cover" src="/img/banner.png">
-    <!-- banner cover end -->
-    
+  
 
-    <!-- banner content -->
-    <div class="trm-banner-content trm-overlay">
-        <div class="container">
-            <div class="row">
-                
-                <div class="col-lg-4"></div>
-                
-                <div class="col-lg-8">
-
-                    <!-- banner title -->
-                    <div class="trm-banner-text ">
-                        <div class="trm-label trm-mb-20">
-                            浏览全部文章。
-                        </div>
-                        <h1 class="trm-mb-30 trm-hsmb-font">
-                            欢迎来到，<br>文章归档。
-                        </h1>
-
-                        
-                            <ul class="trm-breadcrumbs trm-label">
-                                <li>
-                                    <a href="/" class="trm-anima-link">Home</a>
-                                </li>
-                                <li>
-                                    <span>
-                                        tags
-                                    </span>
-                                </li>
-                            </ul>
-                        
-                    </div>
-                    <!-- banner title end -->
-
-                    <!-- scroll hint -->
-                    <span id="scroll-triger" class="trm-scroll-hint-frame">
-                        <div class="trm-scroll-hint"></div>
-                        <span class="trm-label">Scroll down</span>
-                    </span>
-                    <!-- scroll hint end -->
-
-                </div>
+  <div class="trm-banner-content trm-overlay">
+    <div class="container">
+      <div class="row">
+        
+          <div class="col-lg-4"></div>
+        
+        <div class="col-lg-8">
+          <div class="trm-banner-text">
+            <div class="trm-label trm-mb-20">
+              浏览全部文章。
             </div>
+            <h1 class="trm-mb-30 trm-hsmb-font trm-banner-title">
+              欢迎来到，<br>文章归档。
+            </h1>
+
+            
+          </div>
         </div>
+      </div>
     </div>
-    <!-- banner content end -->
+  </div>
 </div>
+
+<script>
+(function () {
+  var fitBannerTitles = function () {
+    document.querySelectorAll('.trm-banner-title').forEach(function (title) {
+      title.style.removeProperty('font-size');
+      title.style.removeProperty('display');
+      title.style.removeProperty('-webkit-line-clamp');
+      title.style.removeProperty('-webkit-box-orient');
+      title.style.removeProperty('overflow');
+
+      if (window.innerWidth > 768) return;
+
+      var getLineCount = function () {
+        var range = document.createRange();
+        range.selectNodeContents(title);
+        return Array.from(range.getClientRects()).filter(function (rect) {
+          return rect.height > 0;
+        }).length;
+      };
+      var size = Number.parseFloat(window.getComputedStyle(title).fontSize);
+
+      while (getLineCount() > 2 && size > 16) {
+        size -= 1;
+        title.style.fontSize = size + 'px';
+      }
+
+      if (getLineCount() > 2) {
+        title.style.display = '-webkit-box';
+        title.style.webkitLineClamp = '2';
+        title.style.webkitBoxOrient = 'vertical';
+        title.style.overflow = 'hidden';
+      }
+    });
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', fitBannerTitles, { once: true });
+  } else {
+    fitBannerTitles();
+  }
+
+  window.addEventListener('resize', fitBannerTitles);
+  document.addEventListener('swup:contentReplaced', fitBannerTitles);
+})();
+</script>
+
 
   <div class="container">
     <div class="row trm-page-layout">
@@ -286,34 +309,34 @@
         <!-- info -->
 <div class="trm-divider trm-mb-40 trm-mt-40"></div>
 <ul class="trm-table trm-mb-20">
-    
-        <li>
-            <div class="trm-label">
-                地址:
-            </div>
-            <div class="trm-label trm-label-light">
-                广东
-            </div>
-        </li>
-    
-        <li>
-            <div class="trm-label">
-                年龄:
-            </div>
-            <div class="trm-label trm-label-light">
-                24
-            </div>
-        </li>
-    
-        <li>
-            <div class="trm-label">
-                邮箱:
-            </div>
-            <div class="trm-label trm-label-light">
-                grant1214@foxmail.com
-            </div>
-        </li>
-    
+  
+    <li>
+      <div class="trm-label">
+        地址:
+      </div>
+      <div class="trm-label trm-label-light">
+        广东
+      </div>
+    </li>
+  
+    <li>
+      <div class="trm-label">
+        年龄:
+      </div>
+      <div class="trm-label trm-label-light">
+        24
+      </div>
+    </li>
+  
+    <li>
+      <div class="trm-label">
+        邮箱:
+      </div>
+      <div class="trm-label trm-label-light">
+        grant1214@foxmail.com
+      </div>
+    </li>
+  
 </ul>
 <!-- info end -->
 

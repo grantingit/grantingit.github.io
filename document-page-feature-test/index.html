@@ -137,7 +137,7 @@
     
     
         <div class="trm-logo-text">
-            Grant&#39;s<span>blog</span>
+            Grant&#39;s blog<span></span>
         </div>
     
 </a>
@@ -204,59 +204,82 @@
             <!-- body -->
             
 <div class="trm-content-start">
-  <div class="trm-banner">
-    
-    <!-- banner cover -->
+  
+
+<div class="trm-banner">
+  
     <img style="object-position:top;object-fit:cover;" alt="banner" class="trm-banner-cover" src="/img/banner.png">
-    <!-- banner cover end -->
-    
+  
 
-    <!-- banner content -->
-    <div class="trm-banner-content trm-overlay">
-        <div class="container">
-            <div class="row">
-                
-                <div class="col-lg-4"></div>
-                
-                <div class="col-lg-8">
-
-                    <!-- banner title -->
-                    <div class="trm-banner-text ">
-                        <div class="trm-label trm-mb-20">
-                            NEWS LETTER
-                        </div>
-                        <h1 class="trm-mb-30 trm-hsmb-font">
-                            文档页功能测试
-                        </h1>
-
-                        
-                            <ul class="trm-breadcrumbs trm-label">
-                                <li>
-                                    <a href="/" class="trm-anima-link">Home</a>
-                                </li>
-                                <li>
-                                    <span>
-                                        document-page-feature-test
-                                    </span>
-                                </li>
-                            </ul>
-                        
-                    </div>
-                    <!-- banner title end -->
-
-                    <!-- scroll hint -->
-                    <span id="scroll-triger" class="trm-scroll-hint-frame">
-                        <div class="trm-scroll-hint"></div>
-                        <span class="trm-label">Scroll down</span>
-                    </span>
-                    <!-- scroll hint end -->
-
-                </div>
+  <div class="trm-banner-content trm-overlay">
+    <div class="container">
+      <div class="row">
+        
+          <div class="col-lg-4"></div>
+        
+        <div class="col-lg-8">
+          <div class="trm-banner-text">
+            <div class="trm-label trm-mb-20">
+              文章详情
             </div>
+            <h1 class="trm-mb-30 trm-hsmb-font trm-banner-title">
+              文档页功能测试
+            </h1>
+
+            
+          </div>
         </div>
+      </div>
     </div>
-    <!-- banner content end -->
+  </div>
 </div>
+
+<script>
+(function () {
+  var fitBannerTitles = function () {
+    document.querySelectorAll('.trm-banner-title').forEach(function (title) {
+      title.style.removeProperty('font-size');
+      title.style.removeProperty('display');
+      title.style.removeProperty('-webkit-line-clamp');
+      title.style.removeProperty('-webkit-box-orient');
+      title.style.removeProperty('overflow');
+
+      if (window.innerWidth > 768) return;
+
+      var getLineCount = function () {
+        var range = document.createRange();
+        range.selectNodeContents(title);
+        return Array.from(range.getClientRects()).filter(function (rect) {
+          return rect.height > 0;
+        }).length;
+      };
+      var size = Number.parseFloat(window.getComputedStyle(title).fontSize);
+
+      while (getLineCount() > 2 && size > 16) {
+        size -= 1;
+        title.style.fontSize = size + 'px';
+      }
+
+      if (getLineCount() > 2) {
+        title.style.display = '-webkit-box';
+        title.style.webkitLineClamp = '2';
+        title.style.webkitBoxOrient = 'vertical';
+        title.style.overflow = 'hidden';
+      }
+    });
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', fitBannerTitles, { once: true });
+  } else {
+    fitBannerTitles();
+  }
+
+  window.addEventListener('resize', fitBannerTitles);
+  document.addEventListener('swup:contentReplaced', fitBannerTitles);
+})();
+</script>
+
 
   <div class="container">
     <div class="row trm-page-layout">
@@ -290,34 +313,34 @@
         <!-- info -->
 <div class="trm-divider trm-mb-40 trm-mt-40"></div>
 <ul class="trm-table trm-mb-20">
-    
-        <li>
-            <div class="trm-label">
-                地址:
-            </div>
-            <div class="trm-label trm-label-light">
-                广东
-            </div>
-        </li>
-    
-        <li>
-            <div class="trm-label">
-                年龄:
-            </div>
-            <div class="trm-label trm-label-light">
-                24
-            </div>
-        </li>
-    
-        <li>
-            <div class="trm-label">
-                邮箱:
-            </div>
-            <div class="trm-label trm-label-light">
-                grant1214@foxmail.com
-            </div>
-        </li>
-    
+  
+    <li>
+      <div class="trm-label">
+        地址:
+      </div>
+      <div class="trm-label trm-label-light">
+        广东
+      </div>
+    </li>
+  
+    <li>
+      <div class="trm-label">
+        年龄:
+      </div>
+      <div class="trm-label trm-label-light">
+        24
+      </div>
+    </li>
+  
+    <li>
+      <div class="trm-label">
+        邮箱:
+      </div>
+      <div class="trm-label trm-label-light">
+        grant1214@foxmail.com
+      </div>
+    </li>
+  
 </ul>
 <!-- info end -->
 
