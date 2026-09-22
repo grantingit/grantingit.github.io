@@ -7,21 +7,24 @@
 <meta name="full-screen" content="yes">
 <meta name="theme-color" content="#317EFB" />
 <meta content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=0" name="viewport">
-<meta name="description" content="Grant个人博客，记录技术、笔记与生活。">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Grant&#39;s blog">
-<meta property="og:url" content="https://grantingit.github.io/tags/%E6%90%9C%E7%B4%A2/">
+<meta name="description" content="一、直流电机类   类型 核心特点 关键差异 典型场景    有刷直流 电刷+换向器机械换向 便宜、启动力矩大；有火花、需维护 玩具、雨刮、小家电   无刷直流 BLDC 电子换向，永磁转子 高效、寿命长、低噪；需驱动器 无人机、风扇、电动车、硬盘   空心杯电机 转子无铁芯，线圈做成杯状 响应极快、运行平稳、效率高、体积小 相机对焦、医疗机器人、航空、精密仪器   永磁直流 定子用永磁体 体积小">
+<meta property="og:type" content="article">
+<meta property="og:title" content="motor">
+<meta property="og:url" content="https://grantingit.github.io/motor/">
 <meta property="og:site_name" content="Grant&#39;s blog">
-<meta property="og:description" content="Grant个人博客，记录技术、笔记与生活。">
+<meta property="og:description" content="一、直流电机类   类型 核心特点 关键差异 典型场景    有刷直流 电刷+换向器机械换向 便宜、启动力矩大；有火花、需维护 玩具、雨刮、小家电   无刷直流 BLDC 电子换向，永磁转子 高效、寿命长、低噪；需驱动器 无人机、风扇、电动车、硬盘   空心杯电机 转子无铁芯，线圈做成杯状 响应极快、运行平稳、效率高、体积小 相机对焦、医疗机器人、航空、精密仪器   永磁直流 定子用永磁体 体积小">
 <meta property="og:locale">
+<meta property="article:published_time" content="2026-09-22T06:29:10.000Z">
+<meta property="article:modified_time" content="2026-09-22T06:29:10.000Z">
 <meta property="article:author" content="Grant">
-<meta property="article:tag" content="博客, 技术, 笔记, Hexo">
+<meta property="article:tag" content="百科">
+<meta property="article:tag" content="硬件">
 <meta name="twitter:card" content="summary">
 
     <meta name="keywords" content="博客, 技术, 笔记, Hexo">
 
 
-<title >Grant's blog</title>
+<title >motor</title>
 
 <!-- Favicon -->
 
@@ -60,7 +63,7 @@
 
 <!-- Variable -->
 <script>window.ASYNC_CONFIG = {"hostname":"grantingit.github.io","author":"Grant","root":"/","typed_text":null,"theme_version":"2.2.7","theme":{"switch":true,"default":"auto"},"favicon":{"logo":"/img/favicon.svg","icon16":"/img/favicon.svg","icon32":"/img/favicon.svg","apple_touch_icon":null,"webmanifest":null,"visibilitychange":false,"hidden":"/failure.ico","show_text":"(/≧▽≦/)咦！又好了！","hide_text":"(●—●)喔哟，崩溃啦！","dark_loge":null},"i18n":{"placeholder":"搜索文章...","empty":"找不到您查询的内容: ${query}","hits":"找到 ${hits} 条结果","hits_time":"找到 ${hits} 条结果（用时 ${time} 毫秒）","author":"本文作者：","copyright_link":"本文链接：","copyright_license_title":"版权声明：","copyright_license_content":"本博客所有文章除特别声明外，均默认采用 undefined 许可协议。","copy_success":"复制成功","copy_failure":"复制失败","open_read_mode":"进入阅读模式","exit_read_mode":"退出阅读模式","notice_outdate_message":"距离上次更新已经 undefined 天了, 文章内容可能已经过时。","sticky":"置顶","just":"刚刚","min":"分钟前","hour":"小时前","day":"天前","month":"个月前"},"swup":false,"plugin":{"flickr_justified_gallery":"https://unpkg.com/flickr-justified-gallery@latest/dist/fjGallery.min.js"},"icons":{"sun":"far fa-sun","moon":"far fa-moon","play":"fas fa-play","email":"far fa-envelope","next":"fas fa-arrow-right","calendar":"far fa-calendar-alt","clock":"far fa-clock","user":"far fa-user","back_top":"fas fa-arrow-up","close":"fas fa-times","search":"fas fa-search","reward":"fas fa-hand-holding-usd","toc_tag":"fas fa-th-list","read":"fas fa-book-reader","arrows":"fas fa-arrows-alt-h","double_arrows":"fas fa-angle-double-down","copy":"fas fa-copy","user_tag":"fas fa-user-alt"},"icontype":"font","highlight":{"plugin":"highlighjs","theme":true,"copy":true,"lang":true,"title":"default","height_limit":200},"toc":{"post_title":false},"live_time":{"start_time":"","prefix":"博客已萌萌哒运行 undefined 天"},"danmu":{"enable":false,"el":".trm-banner"},"search":{"enable":true,"type":"local","href":"https://www.google.com/search?q=site:","domain":null,"path":"search.json"}};</script>
-<script id="async-page-config">window.PAGE_CONFIG = {"isPost":false,"isHome":false,"postUpdate":"2026-09-22 12:59:12"};</script>
+<script id="async-page-config">window.PAGE_CONFIG = {"isPost":true,"isHome":false,"postUpdate":"2026-09-22 14:29:10"};</script>
 
 <!-- Theme mode css -->
 <link data-swup-theme rel="stylesheet" href="/css/index.css?v=2.2.7" id="trm-switch-style">
@@ -200,13 +203,12 @@
 
             <!-- body -->
             
-
 <div class="trm-content-start">
   
 
 <div class="trm-banner">
   
-    <img style="object-position:top;object-fit:cover;" alt="banner" class="trm-banner-cover" src="/img/banner.png">
+    <img style="object-position:top;object-fit:cover;" alt="banner" class="trm-banner-cover" src="/img/block.jpg">
   
 
   <div class="trm-banner-content trm-overlay">
@@ -218,10 +220,10 @@
         <div class="col-lg-8">
           <div class="trm-banner-text">
             <div class="trm-label trm-mb-20">
-              浏览全部文章。
+              文章详情
             </div>
             <h1 class="trm-mb-30 trm-hsmb-font trm-banner-title">
-              欢迎来到，<br>文章归档。
+              motor
             </h1>
 
             
@@ -351,205 +353,304 @@
       <div class="trm-page-content col-lg-8">
         <div id="trm-content" class="trm-content">
           
-  <div class="row archive-filter-row">
-    <div class="col-lg-12">
-      <div class="trm-card">
-        <div style="padding: 0 20px;">
-          <ul class="trm-tag-list" itemprop="keywords"><li class="trm-tag-list-item"><a class="tag-list-link" href="/tags/Hexo/" rel="tag">Hexo</a><span class="tag-list-count">1</span></li><li class="trm-tag-list-item"><a class="tag-list-link" href="/tags/Markdown/" rel="tag">Markdown</a><span class="tag-list-count">1</span></li><li class="trm-tag-list-item"><a class="tag-list-link" href="/tags/%E5%88%86%E7%B1%BB/" rel="tag">分类</a><span class="tag-list-count">1</span></li><li class="trm-tag-list-item"><a class="tag-list-link" href="/tags/%E6%90%9C%E7%B4%A2/" rel="tag">搜索</a><span class="tag-list-count">1</span></li><li class="trm-tag-list-item"><a class="tag-list-link" href="/tags/%E6%96%87%E6%A1%A3/" rel="tag">文档</a><span class="tag-list-count">1</span></li><li class="trm-tag-list-item"><a class="tag-list-link" href="/tags/%E6%B5%8B%E8%AF%95/" rel="tag">测试</a><span class="tag-list-count">3</span></li></ul>
-        </div>
-      </div>
+
+<div class="trm-post-info row">
+  <div class="col-sm-4">
+    <div class="trm-card trm-label trm-label-light text-center">
+      <i class="iconfont far fa-calendar-alt trm-icon"></i><br>
+      09/22
     </div>
   </div>
-
-
-
-  
-    <div class="row taxonomy-heading-row">
-      <div class="col-lg-12">
-        <h5 class="trm-title-with-divider">
-          
-            搜索
-          
-          <span data-number="01"></span>
-        </h5>
-      </div>
+  <div class="col-sm-4">
+    <div class="trm-card trm-label trm-label-light text-center trm-post-taxonomy trm-post-taxonomy-with-tags">
+      <i class="iconfont fas fa-folder-open trm-icon"></i><br>
+      <span class="trm-post-category">文章</span>
+      
+        <span class="trm-post-tags" title="硬件、百科">硬件、百科</span>
+      
     </div>
-    <div class="row archive-post-list">
-      
-        
-          <div class="col-lg-6">
-  <div class="trm-blog-card trm-scroll-animation" data-categories='[&#34;笔记&#34;]' data-tags='[&#34;测试&#34;,&#34;搜索&#34;,&#34;分类&#34;]'>
-    <a href="/search-taxonomy-test/" class="trm-cover-frame trm-anima-link">
-      
-      
-        <img alt="cover" class="no-fancybox" src="/img/block.jpg">
-      
-    </a>
-    <div class="trm-card-descr">
-      <div class="trm-label trm-category trm-mb-20">
-        <a href="/categories/%E7%AC%94%E8%AE%B0/">
-          笔记
-        </a>
-      </div>
-      <h5>
-        <a href="/search-taxonomy-test/" class="trm-anima-link">
-          搜索与分类标签测试
-        </a>
-      </h5>
-      
-      
-        <p class="trm-archive-card-excerpt">搜索关键词本页包含用于搜索验证的关键词：local-search、taxonomy、异步主题。 分类与标签这篇文档归入「笔记」分类，同时挂载搜索、分类和测试三个标签。 搜索索引应在打开搜索弹窗时才加载。</p>
-      
-      <div class="trm-divider trm-mb-20 trm-mt-20"></div>
-      <ul class="trm-card-data trm-label">
-        <li>26/09/19</li>
-        <li>08:30</li>
-      </ul>
+  </div>
+  <div class="col-sm-4">
+    <div id="post-author" class="trm-card trm-label trm-label-light text-center">
+      <i class="iconfont far fa-user trm-icon"></i><br>
+      Grant
     </div>
   </div>
 </div>
 
-        
-      
-    </div>
-  
-
-
 <script>
 (function () {
-  var selectedFilters = {
-    category: [],
-    tag: [],
-    tagMode: 'all'
-  };
+  var fitPostTags = function () {
+    document.querySelectorAll('.trm-post-tags').forEach(function (tags) {
+      tags.style.removeProperty('font-size');
 
-  var getCardValues = function (card, group) {
-    var raw = card.getAttribute(group === 'category' ? 'data-categories' : 'data-tags');
-    if (!raw) return [];
-
-    try {
-      return JSON.parse(raw);
-    } catch (error) {
-      return [];
-    }
-  };
-
-  var applyArchiveFilters = function () {
-    var filter = document.querySelector('[data-archive-filter]');
-    if (!filter) return;
-
-    var cards = Array.from(document.querySelectorAll('.archive-post-list .trm-blog-card'));
-    var visibleCount = 0;
-
-    cards.forEach(function (card) {
-      var cardCategories = getCardValues(card, 'category');
-      var cardTags = getCardValues(card, 'tag');
-      var categoryMatch = selectedFilters.category.length === 0
-        || cardCategories.indexOf(selectedFilters.category[0]) !== -1;
-      var tagMatch = selectedFilters.tag.length === 0
-        || (selectedFilters.tagMode === 'all'
-          ? selectedFilters.tag.every(function (name) { return cardTags.indexOf(name) !== -1; })
-          : selectedFilters.tag.some(function (name) { return cardTags.indexOf(name) !== -1; }));
-      var visible = categoryMatch && tagMatch;
-      var item = card.closest('.col-lg-6');
-
-      if (item) item.hidden = !visible;
-      if (visible) visibleCount += 1;
-    });
-
-    filter.querySelectorAll('[data-filter-group]').forEach(function (button) {
-      var group = button.getAttribute('data-filter-group');
-      var value = button.getAttribute('data-filter-value');
-      button.setAttribute('aria-pressed', selectedFilters[group].indexOf(value) !== -1 ? 'true' : 'false');
-    });
-
-    filter.querySelectorAll('[data-filter-mode]').forEach(function (button) {
-      button.setAttribute('aria-pressed', button.getAttribute('data-filter-mode') === selectedFilters.tagMode ? 'true' : 'false');
-    });
-
-    var reset = filter.querySelector('[data-filter-reset]');
-    var hasSelection = selectedFilters.category.length > 0 || selectedFilters.tag.length > 0;
-    if (reset) reset.disabled = !hasSelection;
-
-    var empty = document.querySelector('[data-archive-filter-empty]');
-    if (empty) empty.hidden = visibleCount > 0;
-  };
-
-  var syncArchiveFilterPosition = function () {
-    document.querySelectorAll('.archive-filter-row').forEach(function (row) {
-      var card = row.querySelector('.trm-card');
-      var banner = document.querySelector('.trm-banner');
-      if (!card || !banner) return;
-
-      var marginTop = Number.parseFloat(window.getComputedStyle(row).marginTop) || 0;
-      var baseTop = row.getBoundingClientRect().top - marginTop;
-      var targetOffset = Math.max(0, baseTop + card.getBoundingClientRect().height / 4 - banner.getBoundingClientRect().bottom);
-
-      row.style.setProperty('--archive-filter-offset', targetOffset + 'px');
+      var size = Number.parseFloat(window.getComputedStyle(tags).fontSize);
+      while (tags.scrollWidth > tags.clientWidth && size > 6) {
+        size -= 0.5;
+        tags.style.fontSize = size + 'px';
+      }
     });
   };
 
   if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', syncArchiveFilterPosition, { once: true });
+    document.addEventListener('DOMContentLoaded', fitPostTags, { once: true });
   } else {
-    syncArchiveFilterPosition();
+    fitPostTags();
   }
 
-  document.addEventListener('click', function (event) {
-    var reset = event.target.closest('[data-filter-reset]');
-    if (reset) {
-      selectedFilters.category = [];
-      selectedFilters.tag = [];
-      selectedFilters.tagMode = 'all';
-      applyArchiveFilters();
-      return;
-    }
-
-    var modeButton = event.target.closest('[data-filter-mode]');
-    if (modeButton) {
-      selectedFilters.tagMode = modeButton.getAttribute('data-filter-mode');
-      applyArchiveFilters();
-      return;
-    }
-
-    var button = event.target.closest('[data-filter-group]');
-    if (!button) return;
-
-    var group = button.getAttribute('data-filter-group');
-    var value = button.getAttribute('data-filter-value');
-
-    if (group === 'category') {
-      selectedFilters.category = selectedFilters.category.indexOf(value) === -1 ? [value] : [];
-      applyArchiveFilters();
-      return;
-    }
-
-    var values = selectedFilters[group];
-    var index = values.indexOf(value);
-
-    if (index === -1) values.push(value);
-    else values.splice(index, 1);
-
-    applyArchiveFilters();
-  });
-
-  window.addEventListener('resize', syncArchiveFilterPosition);
-  document.addEventListener('swup:contentReplaced', function () {
-    selectedFilters.category = [];
-    selectedFilters.tag = [];
-    selectedFilters.tagMode = 'all';
-    syncArchiveFilterPosition();
-    applyArchiveFilters();
-  });
-
-  applyArchiveFilters();
+  window.addEventListener('resize', fitPostTags);
+  document.addEventListener('swup:contentReplaced', fitPostTags);
 })();
 </script>
 
+<div class="trm-card ">
+    <article id="article-container" class="trm-publication">
+    <h2 id="一、直流电机类"><a href="#一、直流电机类" class="headerlink" title="一、直流电机类"></a>一、直流电机类</h2><table>
+<thead>
+<tr>
+<th align="left">类型</th>
+<th align="left">核心特点</th>
+<th align="left">关键差异</th>
+<th align="left">典型场景</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"><strong>有刷直流</strong></td>
+<td align="left">电刷+换向器机械换向</td>
+<td align="left">便宜、启动力矩大；有火花、需维护</td>
+<td align="left">玩具、雨刮、小家电</td>
+</tr>
+<tr>
+<td align="left"><strong>无刷直流 BLDC</strong></td>
+<td align="left">电子换向，永磁转子</td>
+<td align="left">高效、寿命长、低噪；需驱动器</td>
+<td align="left">无人机、风扇、电动车、硬盘</td>
+</tr>
+<tr>
+<td align="left"><strong>空心杯电机</strong></td>
+<td align="left">转子无铁芯，线圈做成杯状</td>
+<td align="left">响应极快、运行平稳、效率高、体积小</td>
+<td align="left">相机对焦、医疗机器人、航空、精密仪器</td>
+</tr>
+<tr>
+<td align="left"><strong>永磁直流</strong></td>
+<td align="left">定子用永磁体</td>
+<td align="left">体积小、效率较高，多用于小功率</td>
+<td align="left">汽车电机、电动工具、小型设备</td>
+</tr>
+</tbody></table>
+<p><strong>差异点</strong>：有刷靠机械摩擦换向，无刷靠电子换向；空心杯最大特点是“轻”，所以启停快、无齿槽振动。</p>
+<hr>
+<h2 id="二、交流电机类"><a href="#二、交流电机类" class="headerlink" title="二、交流电机类"></a>二、交流电机类</h2><table>
+<thead>
+<tr>
+<th align="left">类型</th>
+<th align="left">核心特点</th>
+<th align="left">关键差异</th>
+<th align="left">典型场景</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"><strong>异步&#x2F;感应电机</strong></td>
+<td align="left">转子靠感应电流产生力矩</td>
+<td align="left">结构简单、便宜可靠；转速略低于同步，需变频调速</td>
+<td align="left">泵、风机、压缩机、工业设备</td>
+</tr>
+<tr>
+<td align="left"><strong>同步电机</strong></td>
+<td align="left">转子转速与旋转磁场同步</td>
+<td align="left">效率&#x2F;功率因数高，可做发电机</td>
+<td align="left">发电、精密驱动</td>
+</tr>
+<tr>
+<td align="left"><strong>永磁同步 PMSM</strong></td>
+<td align="left">同步电机+永磁转子</td>
+<td align="left">高效、高功率密度、控制精度好</td>
+<td align="left">新能源车、伺服、家电</td>
+</tr>
+<tr>
+<td align="left"><strong>交流串激&#x2F;通用电机</strong></td>
+<td align="left">交直流两用，有电刷</td>
+<td align="left">转速高、力矩大；有火花噪音</td>
+<td align="left">吸尘器、电动工具</td>
+</tr>
+<tr>
+<td align="left"><strong>电容电机</strong></td>
+<td align="left">单相交流，电容移相启动</td>
+<td align="left">简单便宜，启动力矩一般</td>
+<td align="left">电风扇、抽油烟机、小水泵</td>
+</tr>
+</tbody></table>
+<p><strong>差异点</strong>：异步像“追着磁场跑，但总慢一点”；同步像“锁住磁场一起跑”。BLDC 和 PMSM 很像，但 BLDC 反电势多为梯形，PMSM 为正弦，后者更平滑精密。</p>
+<hr>
+<h2 id="三、控制与信号电机"><a href="#三、控制与信号电机" class="headerlink" title="三、控制与信号电机"></a>三、控制与信号电机</h2><table>
+<thead>
+<tr>
+<th align="left">类型</th>
+<th align="left">核心特点</th>
+<th align="left">关键差异</th>
+<th align="left">典型场景</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"><strong>步进电机</strong></td>
+<td align="left">脉冲驱动，按步定位</td>
+<td align="left">开环、便宜、低速力矩大；可能失步</td>
+<td align="left">3D打印、CNC、仪器</td>
+</tr>
+<tr>
+<td align="left"><strong>伺服电机</strong></td>
+<td align="left">带编码器闭环控制</td>
+<td align="left">高精度、高响应、贵</td>
+<td align="left">机器人、数控机床、自动化</td>
+</tr>
+<tr>
+<td align="left"><strong>力矩电机</strong></td>
+<td align="left">低速大扭矩，常直驱</td>
+<td align="left">可省减速机，控制好</td>
+<td align="left">转台、卷绕设备、机器人关节</td>
+</tr>
+<tr>
+<td align="left"><strong>测速发电机</strong></td>
+<td align="left">转速转成电压信号</td>
+<td align="left">不输出动力，专门测速</td>
+<td align="left">转速反馈、控制系统</td>
+</tr>
+<tr>
+<td align="left"><strong>自整角机&#x2F;旋转变压器</strong></td>
+<td align="left">角度转成电信号</td>
+<td align="left">高精度角度传感</td>
+<td align="left">航空、航天、数控、机器人</td>
+</tr>
+</tbody></table>
+<p><strong>差异点</strong>：步进是“走格子”，伺服是“带眼睛的电机”；前者便宜但可能丢步，后者贵但精准。</p>
+<hr>
+<h2 id="四、特殊结构-新原理电机"><a href="#四、特殊结构-新原理电机" class="headerlink" title="四、特殊结构&#x2F;新原理电机"></a>四、特殊结构&#x2F;新原理电机</h2><table>
+<thead>
+<tr>
+<th align="left">类型</th>
+<th align="left">核心特点</th>
+<th align="left">关键差异</th>
+<th align="left">典型场景</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"><strong>开关磁阻&#x2F;同步磁阻</strong></td>
+<td align="left">转子无永磁、无绕组</td>
+<td align="left">坚固、耐高温、成本低；转矩脉动&#x2F;噪音较大</td>
+<td align="left">工业驱动、家电、泵风机</td>
+</tr>
+<tr>
+<td align="left"><strong>直线电机</strong></td>
+<td align="left">旋转电机展开成直线</td>
+<td align="left">直接直线运动，高精度高速</td>
+<td align="left">光刻机、磁悬浮、传输线</td>
+</tr>
+<tr>
+<td align="left"><strong>音圈电机</strong></td>
+<td align="left">短行程直线直流电机</td>
+<td align="left">极快响应、精密定位</td>
+<td align="left">相机对焦、精密平台</td>
+</tr>
+<tr>
+<td align="left"><strong>盘式&#x2F;轴向磁通电机</strong></td>
+<td align="left">磁力线沿轴向，薄盘结构</td>
+<td align="left">轴向尺寸短、功率密度高</td>
+<td align="left">电动车轮毂、无人机</td>
+</tr>
+<tr>
+<td align="left"><strong>磁悬浮电机</strong></td>
+<td align="left">转子悬浮，无接触</td>
+<td align="left">无摩擦、高转速、长寿命</td>
+<td align="left">鼓风机、压缩机、磁悬浮列车</td>
+</tr>
+<tr>
+<td align="left"><strong>超声波&#x2F;压电电机</strong></td>
+<td align="left">压电振动驱动</td>
+<td align="left">无磁场、低速大扭矩、断电自锁</td>
+<td align="left">相机镜头、精密仪器</td>
+</tr>
+<tr>
+<td align="left"><strong>形状记忆合金电机</strong></td>
+<td align="left">温度变化产生形变</td>
+<td align="left">结构简单、力大；慢、效率低</td>
+<td align="left">微型执行器、医疗</td>
+</tr>
+<tr>
+<td align="left"><strong>静电电机</strong></td>
+<td align="left">静电引力&#x2F;斥力驱动</td>
+<td align="left">原理不同，适合微型化</td>
+<td align="left">MEMS、微机器人</td>
+</tr>
+<tr>
+<td align="left"><strong>分子&#x2F;纳米马达</strong></td>
+<td align="left">分子尺度，化学&#x2F;光驱动</td>
+<td align="left">极致微型，非传统电磁</td>
+<td align="left">生物、纳米机器</td>
+</tr>
+</tbody></table>
 
-    <div class="trm-pagination">
-        <span class="page-number current">1</span>
+</article>
+    
+    
+
+</div>
+
+
+
+<div class="trm-post-next-prev row">
+  <div class="col-lg-12">
+    <h5 class="trm-title-with-divider">
+      其他文章
+      <span data-number="02"></span>
+    </h5>
+  </div>
+  
+    <div class="col-lg-6">
+    <div class="trm-older-publications-card trm-scroll-animation trm-active-el">
+        <div class="trm-older-publication">
+            
+            <a class="trm-op-top trm-anima-link" href="/line/">
+                <span class="trm-op-cover">
+                    <img alt="cover" class="no-fancybox" src="/img/block.jpg">
+                </span>
+                <h6 class="trm-op-title">总线与协议</h6>
+            </a>
+            <div class="trm-divider trm-mb-15 trm-mt-20"></div>
+            <ul class="trm-card-data trm-label">
+                <li>26/09/22</li>
+                <li>15:02</li>
+                <li>技术</li>
+            </ul>
+        </div>
     </div>
+</div>
+  
+    <div class="col-lg-6">
+    <div class="trm-older-publications-card trm-scroll-animation trm-active-el">
+        <div class="trm-older-publication">
+            
+            <a class="trm-op-top trm-anima-link" href="/power/">
+                <span class="trm-op-cover">
+                    <img alt="cover" class="no-fancybox" src="/img/block.jpg">
+                </span>
+                <h6 class="trm-op-title">电源</h6>
+            </a>
+            <div class="trm-divider trm-mb-15 trm-mt-20"></div>
+            <ul class="trm-card-data trm-label">
+                <li>26/09/22</li>
+                <li>14:40</li>
+                <li>技术</li>
+            </ul>
+        </div>
+    </div>
+</div>
+  
+</div>
+
+
+
+    
 
 
         </div>
@@ -598,9 +699,29 @@
 
             
 
+    <div id="post-toc" class="trm-post-toc">
+      <div class="trm-post-toc-header">
+        目录导航
+				<span id="post-toc-top">
+					置顶
+				</span>
+      </div>
+      <div class="trm-post-toc-content">
+        <ol class="trm-toc"><li class="trm-toc-item trm-toc-level-2" title="一、直流电机类"><a rel="nofollow" class="trm-toc-link" href="#一、直流电机类"><span class="trm-toc-number">1.</span> <span class="trm-toc-text">一、直流电机类</span></a></li><li class="trm-toc-item trm-toc-level-2" title="二、交流电机类"><a rel="nofollow" class="trm-toc-link" href="#二、交流电机类"><span class="trm-toc-number">2.</span> <span class="trm-toc-text">二、交流电机类</span></a></li><li class="trm-toc-item trm-toc-level-2" title="三、控制与信号电机"><a rel="nofollow" class="trm-toc-link" href="#三、控制与信号电机"><span class="trm-toc-number">3.</span> <span class="trm-toc-text">三、控制与信号电机</span></a></li><li class="trm-toc-item trm-toc-level-2" title="四、特殊结构&#x2F;新原理电机"><a rel="nofollow" class="trm-toc-link" href="#四、特殊结构-新原理电机"><span class="trm-toc-number">4.</span> <span class="trm-toc-text">四、特殊结构&#x2F;新原理电机</span></a></li></ol>
+      </div>
+    </div>
+
             
 <div class="trm-fixed-container">
     
+        <div class="trm-fixed-btn post-toc-btn" data-title="目录">
+            <i class="iconfont fas fa-th-list"></i>
+        </div>
+    
+    
+        <div class="trm-fixed-btn" data-title="阅读模式" onclick="asyncFun.switchReadMode()">
+            <i class="iconfont fas fa-book-reader"></i>
+        </div>
     
     
     <div id="trm-back-top" class="trm-fixed-btn" data-title="回到顶部">
@@ -675,6 +796,10 @@
     
 
     <!-- 评论插件 -->
+    
+        
+
+        
     
 
 		

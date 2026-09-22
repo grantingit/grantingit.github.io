@@ -1,0 +1,939 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta name="x5-fullscreen" content="true">
+<meta name="full-screen" content="yes">
+<meta name="theme-color" content="#317EFB" />
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=0" name="viewport">
+<meta name="description" content="RS-485（物理层：接线怎么接，哪个电压代表0或1）差分信号 ​	通信距离长（最大1200M） ​	抗干扰强 ​	支持多点通信（发送数据，所有节点都能收到） 主从轮询模式，不允许多个从设备同时发送不同的信号 Modbus RTU（协议层：数据包结构，加密解密，怎么传输等）简单，适合设备数据采集和简单控制 Profibus-DPPLC控制，工业自动化产线 CAN差分信号 线与，允许多个模块同时向总">
+<meta property="og:type" content="article">
+<meta property="og:title" content="总线与协议">
+<meta property="og:url" content="https://grantingit.github.io/line/">
+<meta property="og:site_name" content="Grant&#39;s blog">
+<meta property="og:description" content="RS-485（物理层：接线怎么接，哪个电压代表0或1）差分信号 ​	通信距离长（最大1200M） ​	抗干扰强 ​	支持多点通信（发送数据，所有节点都能收到） 主从轮询模式，不允许多个从设备同时发送不同的信号 Modbus RTU（协议层：数据包结构，加密解密，怎么传输等）简单，适合设备数据采集和简单控制 Profibus-DPPLC控制，工业自动化产线 CAN差分信号 线与，允许多个模块同时向总">
+<meta property="og:locale">
+<meta property="article:published_time" content="2026-09-22T07:02:20.000Z">
+<meta property="article:modified_time" content="2026-09-22T07:02:20.000Z">
+<meta property="article:author" content="Grant">
+<meta property="article:tag" content="百科">
+<meta property="article:tag" content="硬件">
+<meta name="twitter:card" content="summary">
+
+    <meta name="keywords" content="博客, 技术, 笔记, Hexo">
+
+
+<title >总线与协议</title>
+
+<!-- Favicon -->
+
+    <link href='/img/favicon.svg?v=2.2.7' rel='icon' type='image/png' sizes='16x16' ></link>
+
+
+    <link href='/img/favicon.svg?v=2.2.7' rel='icon' type='image/png' sizes='32x32' ></link>
+
+
+
+
+<!-- Plugin -->
+
+
+
+
+    
+<link rel="stylesheet" href="/css/plugins/bootstrap.row.css">
+
+    
+<link rel="stylesheet" href="https://unpkg.com/@fancyapps/ui@4.0/dist/fancybox.css">
+
+    
+    
+
+
+
+
+<!-- Icon -->
+
+    
+<link rel="stylesheet" href="/css/plugins/font-awesome.min.css">
+
+
+
+
+<!-- Variable -->
+<script>window.ASYNC_CONFIG = {"hostname":"grantingit.github.io","author":"Grant","root":"/","typed_text":null,"theme_version":"2.2.7","theme":{"switch":true,"default":"auto"},"favicon":{"logo":"/img/favicon.svg","icon16":"/img/favicon.svg","icon32":"/img/favicon.svg","apple_touch_icon":null,"webmanifest":null,"visibilitychange":false,"hidden":"/failure.ico","show_text":"(/≧▽≦/)咦！又好了！","hide_text":"(●—●)喔哟，崩溃啦！","dark_loge":null},"i18n":{"placeholder":"搜索文章...","empty":"找不到您查询的内容: ${query}","hits":"找到 ${hits} 条结果","hits_time":"找到 ${hits} 条结果（用时 ${time} 毫秒）","author":"本文作者：","copyright_link":"本文链接：","copyright_license_title":"版权声明：","copyright_license_content":"本博客所有文章除特别声明外，均默认采用 undefined 许可协议。","copy_success":"复制成功","copy_failure":"复制失败","open_read_mode":"进入阅读模式","exit_read_mode":"退出阅读模式","notice_outdate_message":"距离上次更新已经 undefined 天了, 文章内容可能已经过时。","sticky":"置顶","just":"刚刚","min":"分钟前","hour":"小时前","day":"天前","month":"个月前"},"swup":false,"plugin":{"flickr_justified_gallery":"https://unpkg.com/flickr-justified-gallery@latest/dist/fjGallery.min.js"},"icons":{"sun":"far fa-sun","moon":"far fa-moon","play":"fas fa-play","email":"far fa-envelope","next":"fas fa-arrow-right","calendar":"far fa-calendar-alt","clock":"far fa-clock","user":"far fa-user","back_top":"fas fa-arrow-up","close":"fas fa-times","search":"fas fa-search","reward":"fas fa-hand-holding-usd","toc_tag":"fas fa-th-list","read":"fas fa-book-reader","arrows":"fas fa-arrows-alt-h","double_arrows":"fas fa-angle-double-down","copy":"fas fa-copy","user_tag":"fas fa-user-alt"},"icontype":"font","highlight":{"plugin":"highlighjs","theme":true,"copy":true,"lang":true,"title":"default","height_limit":200},"toc":{"post_title":false},"live_time":{"start_time":"","prefix":"博客已萌萌哒运行 undefined 天"},"danmu":{"enable":false,"el":".trm-banner"},"search":{"enable":true,"type":"local","href":"https://www.google.com/search?q=site:","domain":null,"path":"search.json"}};</script>
+<script id="async-page-config">window.PAGE_CONFIG = {"isPost":true,"isHome":false,"postUpdate":"2026-09-22 15:02:20"};</script>
+
+<!-- Theme mode css -->
+<link data-swup-theme rel="stylesheet" href="/css/index.css?v=2.2.7" id="trm-switch-style">
+<script>
+    let defaultMode = ASYNC_CONFIG.theme.default !=='auto' ?  ASYNC_CONFIG.theme.default : (window.matchMedia("(prefers-color-scheme: light)").matches ? 'style-light' : 'style-dark')
+    let catchMode = localStorage.getItem('theme-mode') || defaultMode;
+    let type = catchMode === 'style-dark' ? 'add' : 'remove';
+    document.documentElement.classList[type]('dark')
+</script>
+
+<!-- CDN -->
+
+
+    
+<link rel="stylesheet" href="/css/site.css">
+
+    
+
+
+
+<!-- Site Analytics -->
+
+ 
+<meta name="generator" content="Hexo 8.1.2"></head>
+
+<body>
+
+  <!-- app wrapper -->
+  <div class="trm-app-frame">
+
+    <!-- page preloader -->
+    <div class="trm-preloader">
+    <div class="trm-holder">
+        <div class="preloader">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </div>
+</div>
+    <!-- page preloader end -->
+
+    <!-- change mode preloader -->
+    <div class="trm-mode-swich-animation-frame">
+    <div class="trm-mode-swich-animation">
+        <i class="i-sun"><i class="iconfont far fa-sun"></i></i>
+        <div class="trm-horizon"></div>
+        <i class="i-moon"><i class="iconfont far fa-moon"></i></i>
+    </div>
+</div>
+    <!-- change mode preloader end -->
+
+      <!-- scroll container -->
+      <div id="trm-dynamic-content" class="trm-swup-animation">
+        <div id="trm-scroll-container" class="trm-scroll-container" style="opacity: 0">
+            <!-- top bar -->
+            <header class="trm-top-bar">
+	<div class="container">
+		<div class="trm-left-side">
+			<!-- logo -->
+<a href="/" class="trm-logo-frame trm-anima-link">
+    
+        <img alt="logo" src="/img/favicon.svg">
+    
+    
+        <div class="trm-logo-text">
+            Grant&#39;s blog<span></span>
+        </div>
+    
+</a>
+<!-- logo end -->
+		</div>
+		<div class="trm-right-side">
+			<!-- menu -->
+<div class="trm-menu">
+    <nav>
+        <ul>
+            
+            <li class="menu-item-has-children ">
+                <a  href="/" target="">
+                    首页
+                </a>
+                
+            </li>
+            
+            <li class="menu-item-has-children ">
+                <a  href="/categories/%E8%B5%84%E8%AE%AF/" target="">
+                    资讯
+                </a>
+                
+            </li>
+            
+            <li class="menu-item-has-children ">
+                <a  href="/archives/" target="">
+                    文章
+                </a>
+                
+            </li>
+            
+        </ul>
+    </nav>
+</div>
+<!-- menu end -->
+			
+    <!-- mode switcher place -->
+    <div class="trm-mode-switcher-place">
+        <div class="trm-mode-switcher">
+            <i class="iconfont far fa-sun"></i>
+            <input class="tgl tgl-light" id="trm-swich" type="checkbox">
+            <label class="trm-swich" for="trm-swich"></label>
+            <i class="iconfont far fa-moon"></i>
+        </div>
+    </div>
+    <!-- mode switcher place end -->
+
+			
+    
+    <div id="trm-search-btn" class="trm-search-btn">
+        <i class="iconfont fas fa-search"></i>
+    </div>
+     
+
+		</div>
+		<div class="trm-menu-btn">
+			<span></span>
+		</div>
+	</div>
+</header>
+            <!-- top bar end -->
+
+            <!-- body -->
+            
+<div class="trm-content-start">
+  
+
+<div class="trm-banner">
+  
+    <img style="object-position:top;object-fit:cover;" alt="banner" class="trm-banner-cover" src="/img/block.jpg">
+  
+
+  <div class="trm-banner-content trm-overlay">
+    <div class="container">
+      <div class="row">
+        
+          <div class="col-lg-4"></div>
+        
+        <div class="col-lg-8">
+          <div class="trm-banner-text">
+            <div class="trm-label trm-mb-20">
+              文章详情
+            </div>
+            <h1 class="trm-mb-30 trm-hsmb-font trm-banner-title">
+              总线与协议
+            </h1>
+
+            
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+(function () {
+  var fitBannerTitles = function () {
+    document.querySelectorAll('.trm-banner-title').forEach(function (title) {
+      title.style.removeProperty('font-size');
+      title.style.removeProperty('display');
+      title.style.removeProperty('-webkit-line-clamp');
+      title.style.removeProperty('-webkit-box-orient');
+      title.style.removeProperty('overflow');
+
+      if (window.innerWidth > 768) return;
+
+      var getLineCount = function () {
+        var range = document.createRange();
+        range.selectNodeContents(title);
+        return Array.from(range.getClientRects()).filter(function (rect) {
+          return rect.height > 0;
+        }).length;
+      };
+      var size = Number.parseFloat(window.getComputedStyle(title).fontSize);
+
+      while (getLineCount() > 2 && size > 16) {
+        size -= 1;
+        title.style.fontSize = size + 'px';
+      }
+
+      if (getLineCount() > 2) {
+        title.style.display = '-webkit-box';
+        title.style.webkitLineClamp = '2';
+        title.style.webkitBoxOrient = 'vertical';
+        title.style.overflow = 'hidden';
+      }
+    });
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', fitBannerTitles, { once: true });
+  } else {
+    fitBannerTitles();
+  }
+
+  window.addEventListener('resize', fitBannerTitles);
+  document.addEventListener('swup:contentReplaced', fitBannerTitles);
+})();
+</script>
+
+
+  <div class="container">
+    <div class="row trm-page-layout">
+      
+        <div class="trm-page-sidebar col-lg-4 hidden-sm">
+          <div class="trm-main-card-frame trm-sidebar">
+    <div class="trm-main-card"> 
+        <!-- card header -->
+<div class="trm-mc-header">
+    <div class="trm-avatar-frame trm-mb-20">
+        <img alt="Avatar" class="trm-avatar" src="/img/avatar.jpg">
+    </div>
+    <h5 class="trm-name trm-mb-15">
+        Grant
+    </h5>
+    
+</div>
+<!-- card header end -->
+        <!-- sidebar social -->
+
+<div class="trm-divider trm-mb-40 trm-mt-40"></div>
+<div class="trm-social">
+    
+        <a href="https://github.com/grantingit" title="github" rel="nofollow" target="_blank">
+            <i class="iconfont fab fa-github"></i>
+        </a>
+    
+</div>
+
+<!-- sidebar social end -->
+        <!-- info -->
+<div class="trm-divider trm-mb-40 trm-mt-40"></div>
+<ul class="trm-table trm-mb-20">
+  
+    <li>
+      <div class="trm-label">
+        地址:
+      </div>
+      <div class="trm-label trm-label-light">
+        广东
+      </div>
+    </li>
+  
+    <li>
+      <div class="trm-label">
+        年龄:
+      </div>
+      <div class="trm-label trm-label-light">
+        24
+      </div>
+    </li>
+  
+    <li>
+      <div class="trm-label">
+        邮箱:
+      </div>
+      <div class="trm-label trm-label-light">
+        grant1214@foxmail.com
+      </div>
+    </li>
+  
+</ul>
+<!-- info end -->
+
+        
+    </div>
+</div>
+        </div>
+      
+
+      <div class="trm-page-content col-lg-8">
+        <div id="trm-content" class="trm-content">
+          
+
+<div class="trm-post-info row">
+  <div class="col-sm-4">
+    <div class="trm-card trm-label trm-label-light text-center">
+      <i class="iconfont far fa-calendar-alt trm-icon"></i><br>
+      09/22
+    </div>
+  </div>
+  <div class="col-sm-4">
+    <div class="trm-card trm-label trm-label-light text-center trm-post-taxonomy trm-post-taxonomy-with-tags">
+      <i class="iconfont fas fa-folder-open trm-icon"></i><br>
+      <span class="trm-post-category">文章</span>
+      
+        <span class="trm-post-tags" title="硬件、百科">硬件、百科</span>
+      
+    </div>
+  </div>
+  <div class="col-sm-4">
+    <div id="post-author" class="trm-card trm-label trm-label-light text-center">
+      <i class="iconfont far fa-user trm-icon"></i><br>
+      Grant
+    </div>
+  </div>
+</div>
+
+<script>
+(function () {
+  var fitPostTags = function () {
+    document.querySelectorAll('.trm-post-tags').forEach(function (tags) {
+      tags.style.removeProperty('font-size');
+
+      var size = Number.parseFloat(window.getComputedStyle(tags).fontSize);
+      while (tags.scrollWidth > tags.clientWidth && size > 6) {
+        size -= 0.5;
+        tags.style.fontSize = size + 'px';
+      }
+    });
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', fitPostTags, { once: true });
+  } else {
+    fitPostTags();
+  }
+
+  window.addEventListener('resize', fitPostTags);
+  document.addEventListener('swup:contentReplaced', fitPostTags);
+})();
+</script>
+
+<div class="trm-card ">
+    <article id="article-container" class="trm-publication">
+    <h2 id="RS-485（物理层：接线怎么接，哪个电压代表0或1）"><a href="#RS-485（物理层：接线怎么接，哪个电压代表0或1）" class="headerlink" title="RS-485（物理层：接线怎么接，哪个电压代表0或1）"></a>RS-485（物理层：接线怎么接，哪个电压代表0或1）</h2><p>差分信号</p>
+<p>​	通信距离长（最大1200M）</p>
+<p>​	抗干扰强</p>
+<p>​	支持多点通信（发送数据，所有节点都能收到）</p>
+<p>主从轮询模式，不允许多个从设备同时发送不同的信号</p>
+<h3 id="Modbus-RTU（协议层：数据包结构，加密解密，怎么传输等）"><a href="#Modbus-RTU（协议层：数据包结构，加密解密，怎么传输等）" class="headerlink" title="Modbus RTU（协议层：数据包结构，加密解密，怎么传输等）"></a>Modbus RTU（协议层：数据包结构，加密解密，怎么传输等）</h3><p>简单，适合设备数据采集和简单控制</p>
+<h3 id="Profibus-DP"><a href="#Profibus-DP" class="headerlink" title="Profibus-DP"></a>Profibus-DP</h3><p>PLC控制，工业自动化产线</p>
+<h2 id="CAN"><a href="#CAN" class="headerlink" title="CAN"></a>CAN</h2><p>差分信号</p>
+<p>线与，允许多个模块同时向总线发送数据</p>
+<h3 id="CANopen"><a href="#CANopen" class="headerlink" title="CANopen"></a>CANopen</h3><h3 id="DeviceNet"><a href="#DeviceNet" class="headerlink" title="DeviceNet"></a>DeviceNet</h3><h2 id="以太网（100Base-TX）"><a href="#以太网（100Base-TX）" class="headerlink" title="以太网（100Base-TX）"></a>以太网（100Base-TX）</h2><p>物理层➡️数据链路层➡️网络层➡️传输层➡️应用层</p>
+<h3 id="Profinet"><a href="#Profinet" class="headerlink" title="Profinet"></a>Profinet</h3><h3 id="EtherCAT"><a href="#EtherCAT" class="headerlink" title="EtherCAT"></a>EtherCAT</h3><h3 id="PowerLink"><a href="#PowerLink" class="headerlink" title="PowerLink"></a>PowerLink</h3><h3 id="Modbus-TCP"><a href="#Modbus-TCP" class="headerlink" title="Modbus TCP"></a>Modbus TCP</h3><h3 id="EtherNET-IP"><a href="#EtherNET-IP" class="headerlink" title="EtherNET&#x2F;IP"></a>EtherNET&#x2F;IP</h3><h1 id="通信方式"><a href="#通信方式" class="headerlink" title="通信方式"></a>通信方式</h1><h2 id="基础概念"><a href="#基础概念" class="headerlink" title="基础概念"></a>基础概念</h2><ul>
+<li><p><strong>GPIO</strong>：General Purpose Input&#x2F;Output，通用输入输出引脚。可以读高低电平、输出高低电平、做外部中断，也可以被复用成 UART、I2C、SPI 等通信引脚。它本身不是通信协议。</p>
+</li>
+<li><p><strong>串行 vs 并行</strong>：串行一位一位传，线少、距离远；并行多位同时传，线多、速度快但距离短。单片机通信大多用串行。</p>
+</li>
+<li><p><strong>同步 vs 异步</strong>：同步有单独时钟线，如 I2C、SPI；异步没有时钟线，靠双方约定波特率，如 UART。</p>
+</li>
+<li><p><strong>单工&#x2F;半双工&#x2F;全双工</strong>：只能单向叫单工；能双向但不能同时叫半双工；能同时收发叫全双工。</p>
+</li>
+<li><p><strong>主从</strong>：主机产生时钟或发起通信，从机响应。I2C、SPI 通常是主从结构。</p>
+</li>
+<li><p><strong>波特率</strong>：通信速率，UART 双方必须一致，常见 9600、115200。</p>
+</li>
+<li><p><strong>电平</strong>：TTL&#x2F;CMOS 常见 3.3V、5V；RS232 是负逻辑高压；RS485&#x2F;CAN 是差分信号。电平不匹配会烧引脚。</p>
+</li>
+<li><table>
+<thead>
+<tr>
+<th align="left">概念</th>
+<th align="left">层次</th>
+<th align="left">作用</th>
+<th align="left">和通信的关系</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">GPIO</td>
+<td align="left">硬件接口</td>
+<td align="left">通用输入输出引脚</td>
+<td align="left">物理层基础，可复用成 UART&#x2F;I2C&#x2F;SPI</td>
+</tr>
+<tr>
+<td align="left">引脚复用 Pin Mux &#x2F; AF</td>
+<td align="left">硬件配置</td>
+<td align="left">把 GPIO 切换成外设功能</td>
+<td align="left">GPIO 和外设之间的桥梁</td>
+</tr>
+<tr>
+<td align="left">外设 Peripheral</td>
+<td align="left">硬件模块</td>
+<td align="left">芯片内部实现 UART、I2C、SPI 等</td>
+<td align="left">通信协议的硬件实现</td>
+</tr>
+<tr>
+<td align="left">寄存器 Register</td>
+<td align="left">硬件编程接口</td>
+<td align="left">配置方向、波特率、中断等</td>
+<td align="left">软件通过寄存器控制硬件</td>
+</tr>
+<tr>
+<td align="left">时钟 Clock &#x2F; RCC</td>
+<td align="left">硬件资源</td>
+<td align="left">给外设提供工作时钟</td>
+<td align="left">没时钟，UART、SPI 都不工作</td>
+</tr>
+<tr>
+<td align="left">中断 Interrupt &#x2F; EXTI &#x2F; NVIC</td>
+<td align="left">硬件机制</td>
+<td align="left">事件通知 CPU</td>
+<td align="left">收发数据、引脚变化触发</td>
+</tr>
+<tr>
+<td align="left">DMA</td>
+<td align="left">硬件机制</td>
+<td align="left">不占 CPU 搬数据</td>
+<td align="left">UART&#x2F;SPI&#x2F;I2C 批量传输常用</td>
+</tr>
+<tr>
+<td align="left">定时器 Timer</td>
+<td align="left">硬件外设</td>
+<td align="left">计时、PWM、输入捕获</td>
+<td align="left">可做波特率、超时、协议时序</td>
+</tr>
+<tr>
+<td align="left">ADC &#x2F; DAC</td>
+<td align="left">模拟外设</td>
+<td align="left">模拟与数字转换</td>
+<td align="left">不是通信，但常和单片机外设一起用</td>
+</tr>
+<tr>
+<td align="left">看门狗 WDT</td>
+<td align="left">硬件外设</td>
+<td align="left">程序跑飞复位</td>
+<td align="left">可靠性相关</td>
+</tr>
+<tr>
+<td align="left">总线 AHB &#x2F; APB</td>
+<td align="left">硬件结构</td>
+<td align="left">CPU 和外设之间的通道</td>
+<td align="left">外设挂载在总线上</td>
+</tr>
+<tr>
+<td align="left">存储器映射 Memory Map</td>
+<td align="left">硬件结构</td>
+<td align="left">外设寄存器映射到地址</td>
+<td align="left">访问寄存器就像访问内存</td>
+</tr>
+<tr>
+<td align="left">位带 Bit-band</td>
+<td align="left">硬件特性</td>
+<td align="left">原子操作某一位</td>
+<td align="left">常用于 GPIO 原子控制</td>
+</tr>
+<tr>
+<td align="left">电源管理 &#x2F; 复位</td>
+<td align="left">硬件资源</td>
+<td align="left">低功耗、复位控制</td>
+<td align="left">影响外设工作状态</td>
+</tr>
+</tbody></table>
+</li>
+</ul>
+<h3 id="1-GPIO"><a href="#1-GPIO" class="headerlink" title="1. GPIO"></a>1. GPIO</h3><p>通用引脚。可配置为输入、输出、上拉、下拉、开漏、推挽、中断、复用功能等。通信中常用来做片选 CS、复位、使能、中断通知，也可以软件模拟 I2C&#x2F;SPI&#x2F;UART，叫 bit-banging，但占 CPU。</p>
+<h3 id="2-UART-USART"><a href="#2-UART-USART" class="headerlink" title="2. UART &#x2F; USART"></a>2. UART &#x2F; USART</h3><p>最常用的异步串行通信。一般三根线：TX、RX、GND。点对点，全双工。数据格式通常是：起始位 + 数据位 + 校验位 + 停止位。<br>UART 是协议，TTL、RS232、RS485 是不同电气层：</p>
+<ul>
+<li>TTL UART：板内短距离，3.3V&#x2F;5V。</li>
+<li>RS232：点对点，抗干扰一般，距离约十几米。</li>
+<li>RS485：差分，抗干扰强，可多点，距离可达上千米，常配 UART 使用。</li>
+</ul>
+<h3 id="3-I2C"><a href="#3-I2C" class="headerlink" title="3. I2C"></a>3. I2C</h3><p>两线：SDA 数据、SCL 时钟。同步、半双工、主从、多设备共享总线。每个从机有地址，常用 7 位地址。SDA&#x2F;SCL 是开漏，必须接上拉电阻。速度常见 100k、400k、1M、3.4M。适合连接传感器、EEPROM、小屏等低速外设。</p>
+<h3 id="4-SPI"><a href="#4-SPI" class="headerlink" title="4. SPI"></a>4. SPI</h3><p>四线：SCK 时钟、MOSI 主发从收、MISO 主收从发、CS 片选。同步、全双工、高速。没有地址，靠 CS 选中不同从机。速度可到几 MHz 到几十 MHz。适合 Flash、屏幕、高速 ADC 等。</p>
+<h3 id="5-CAN"><a href="#5-CAN" class="headerlink" title="5. CAN"></a>5. CAN</h3><p>差分总线：CAN_H、CAN_L，需要收发器。多主、总线型、抗干扰强，常用于汽车和工业。消息靠 ID 仲裁，不是地址。速度常见 125k、250k、500k、1M。</p>
+<h3 id="6-其他"><a href="#6-其他" class="headerlink" title="6. 其他"></a>6. 其他</h3><ul>
+<li><strong>1-Wire</strong>：单线加地，如 DS18B20 温度传感器。</li>
+<li><strong>USB</strong>：复杂，主机&#x2F;设备结构，差分信号，热插拔。</li>
+<li><strong>无线</strong>：蓝牙、WiFi、LoRa 等，属于另一类，不展开。</li>
+</ul>
+<h2 id="三、简单对比"><a href="#三、简单对比" class="headerlink" title="三、简单对比"></a>三、简单对比</h2><table>
+<thead>
+<tr>
+<th align="left">接口</th>
+<th align="left">线数</th>
+<th align="left">同步</th>
+<th align="left">双工</th>
+<th align="left">特点</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">UART</td>
+<td align="left">TX&#x2F;RX&#x2F;GND</td>
+<td align="left">异步</td>
+<td align="left">全双工</td>
+<td align="left">简单，点对点</td>
+</tr>
+<tr>
+<td align="left">I2C</td>
+<td align="left">SDA&#x2F;SCL</td>
+<td align="left">同步</td>
+<td align="left">半双工</td>
+<td align="left">两线多设备，地址寻址</td>
+</tr>
+<tr>
+<td align="left">SPI</td>
+<td align="left">SCK&#x2F;MOSI&#x2F;MISO&#x2F;CS</td>
+<td align="left">同步</td>
+<td align="left">全双工</td>
+<td align="left">高速，片选</td>
+</tr>
+<tr>
+<td align="left">CAN</td>
+<td align="left">CAN_H&#x2F;CAN_L</td>
+<td align="left">异步</td>
+<td align="left">半双工&#x2F;多主</td>
+<td align="left">抗干扰，汽车工业</td>
+</tr>
+<tr>
+<td align="left">RS485</td>
+<td align="left">A&#x2F;B</td>
+<td align="left">配 UART</td>
+<td align="left">半双工常见</td>
+<td align="left">长距离多点</td>
+</tr>
+</tbody></table>
+<h2 id="注意点"><a href="#注意点" class="headerlink" title="注意点"></a>注意点</h2><p>通信不只看接口，还要注意：共地、电平匹配、上拉电阻、终端电阻、线长、干扰、波特率一致、中断&#x2F;DMA&#x2F;缓冲区、帧协议和校验。实际项目中，UART&#x2F;I2C&#x2F;SPI 只是底层，上面还要定义“帧头、长度、命令、数据、校验、帧尾”等协议。</p>
+<h2 id="通信外设-协议类，和-UART-类似"><a href="#通信外设-协议类，和-UART-类似" class="headerlink" title="通信外设&#x2F;协议类，和 UART 类似"></a>通信外设&#x2F;协议类，和 UART 类似</h2><p>这些是“外设 + 协议”：</p>
+<ul>
+<li><strong>I2C</strong>：两线，SDA&#x2F;SCL，半双工，多从机地址寻址。</li>
+<li><strong>SPI</strong>：四线，SCK&#x2F;MOSI&#x2F;MISO&#x2F;CS，全双工，高速。</li>
+<li><strong>CAN</strong>：差分，多主，汽车工业常用。</li>
+<li><strong>USB</strong>：复杂主机&#x2F;设备结构。</li>
+<li><strong>I2S</strong>：音频通信。</li>
+<li><strong>SDIO</strong>：SD 卡、WiFi 模块等。</li>
+<li><strong>Ethernet</strong>：以太网。</li>
+<li><strong>1-Wire</strong>：单线，如 DS18B20。</li>
+</ul>
+<h2 id="电气层概念，和-UART-搭配出现"><a href="#电气层概念，和-UART-搭配出现" class="headerlink" title="电气层概念，和 UART 搭配出现"></a>电气层概念，和 UART 搭配出现</h2><p>UART 是协议，但电气层可以不同：</p>
+<ul>
+<li><strong>TTL UART</strong>：3.3V&#x2F;5V，板内短距离。</li>
+<li><strong>RS232</strong>：负逻辑，点对点，十几米。</li>
+<li><strong>RS485</strong>：差分，抗干扰，多点，上千米。</li>
+<li><strong>差分信号</strong>：CAN、RS485、USB 都用。</li>
+<li><strong>共地、电平转换、上拉电阻、终端电阻、隔离</strong>：物理层细节。</li>
+</ul>
+<h2 id="软件抽象层概念"><a href="#软件抽象层概念" class="headerlink" title="软件抽象层概念"></a>软件抽象层概念</h2><p>这些不是硬件，但常一起出现：</p>
+<ul>
+<li><strong>HAL &#x2F; LL &#x2F; BSP</strong>：硬件抽象层、底层驱动、板级支持包。</li>
+<li><strong>轮询 &#x2F; 中断 &#x2F; DMA</strong>：三种数据搬运方式。</li>
+<li><strong>FIFO &#x2F; 环形缓冲区</strong>：串口收发缓存。</li>
+<li><strong>RTOS</strong>：任务调度，通信常在任务里处理。</li>
+<li><strong>协议帧</strong>：帧头、长度、命令、数据、校验、帧尾。</li>
+</ul>
+<h1 id="ST-Link-VS-TTL"><a href="#ST-Link-VS-TTL" class="headerlink" title="ST-Link VS TTL"></a>ST-Link VS TTL</h1><table>
+<thead>
+<tr>
+<th align="left">对比项</th>
+<th align="left">TTL 转 USB 模块</th>
+<th align="left">ST-Link</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">电脑侧</td>
+<td align="left">USB</td>
+<td align="left">USB</td>
+</tr>
+<tr>
+<td align="left">目标侧</td>
+<td align="left">TTL UART</td>
+<td align="left">SWD &#x2F; JTAG</td>
+</tr>
+<tr>
+<td align="left">目标侧协议</td>
+<td align="left">异步串行：TX&#x2F;RX、波特率</td>
+<td align="left">同步串行调试协议：SWCLK&#x2F;SWDIO 或 JTAG</td>
+</tr>
+<tr>
+<td align="left">主要用途</td>
+<td align="left">串口通信、打印、AT 指令</td>
+<td align="left">下载程序、调试、断点、读寄存器&#x2F;Flash</td>
+</tr>
+<tr>
+<td align="left">电脑上表现</td>
+<td align="left">虚拟 COM 口</td>
+<td align="left">调试器设备；有的还带虚拟 COM 口</td>
+</tr>
+<tr>
+<td align="left">能否烧录</td>
+<td align="left">一般不能，除非走 Bootloader</td>
+<td align="left">可以烧录、调试</td>
+</tr>
+<tr>
+<td align="left">典型芯片&#x2F;固件</td>
+<td align="left">CH340、CP2102、FT232</td>
+<td align="left">ST-Link 内部 MCU + 固件</td>
+</tr>
+<tr>
+<td align="left">连接线</td>
+<td align="left">TX、RX、GND</td>
+<td align="left">SWDIO、SWCLK、GND、RST、3.3V 参考</td>
+</tr>
+</tbody></table>
+<h2 id="ST-Link-的原理"><a href="#ST-Link-的原理" class="headerlink" title="ST-Link 的原理"></a>ST-Link 的原理</h2><p>ST-Link 内部本身也是一个小单片机，运行专用固件。它接收电脑通过 USB 发来的调试命令，然后转换成目标 MCU 能识别的 <strong>SWD 或 JTAG 时序</strong>。</p>
+<p>以 SWD 为例：</p>
+<ul>
+<li>电脑 USB → ST-Link</li>
+<li>ST-Link 转换成 SWD 信号</li>
+<li>SWD 接到 STM32 的 <strong>SWDIO、SWCLK</strong></li>
+<li>ST-Link 通过 ARM CoreSight 调试接口访问 CPU 内核、内存、Flash</li>
+</ul>
+<p>所以它可以做到：</p>
+<ul>
+<li>下载程序到 Flash</li>
+<li>单步调试</li>
+<li>打断点</li>
+<li>查看变量、寄存器</li>
+<li>复位目标芯片</li>
+</ul>
+<p>这些都不是 UART 能直接做的。</p>
+<h2 id="那-ST-Link-和-UART-完全没关系吗？"><a href="#那-ST-Link-和-UART-完全没关系吗？" class="headerlink" title="那 ST-Link 和 UART 完全没关系吗？"></a>那 ST-Link 和 UART 完全没关系吗？</h2><p>也不是。很多 ST-Link 还带一个 <strong>虚拟串口 VCP</strong> 功能。</p>
+<p>这部分可以理解为：</p>
+<ul>
+<li>ST-Link 的调试部分：USB 转 SWD&#x2F;JTAG</li>
+<li>ST-Link 的串口部分：USB 转 TTL UART</li>
+</ul>
+<p>如果你把目标 MCU 的 UART TX&#x2F;RX 接到 ST-Link 对应的 RX&#x2F;TX 引脚，电脑上就会出现一个虚拟 COM 口。<br>这时这个串口功能，和 CH340 那种 TTL 转 USB 是类似的。</p>
+<h2 id="关键区别"><a href="#关键区别" class="headerlink" title="关键区别"></a>关键区别</h2><ul>
+<li>TTL 转 USB：电脑 USB ↔ TTL UART，主要用来串口通信。</li>
+<li>ST-Link：电脑 USB ↔ SWD&#x2F;JTAG，主要用来调试和烧录。</li>
+<li>ST-Link 附带的虚拟串口：电脑 USB ↔ TTL UART，这部分才和 TTL 转 USB 类似。</li>
+<li>UART 是异步串行，没有时钟线，双方约定波特率。</li>
+<li>SWD 是同步串行，有时钟线 SWCLK，由 ST-Link 驱动。</li>
+</ul>
+<p>一句话总结：</p>
+<p><strong>ST-Link 也是 USB 桥接器，但它桥接的是 USB 到 SWD&#x2F;JTAG 调试接口；TTL 转 USB 桥接的是 USB 到 UART。两者原理相似，目标协议和用途不同。ST-Link 自带的虚拟串口功能，才和 TTL 转 USB 类似。</strong></p>
+
+</article>
+    
+    
+
+</div>
+
+
+
+<div class="trm-post-next-prev row">
+  <div class="col-lg-12">
+    <h5 class="trm-title-with-divider">
+      其他文章
+      <span data-number="02"></span>
+    </h5>
+  </div>
+  
+    <div class="col-lg-6">
+    <div class="trm-older-publications-card trm-scroll-animation trm-active-el">
+        <div class="trm-older-publication">
+            
+            <a class="trm-op-top trm-anima-link" href="/power/">
+                <span class="trm-op-cover">
+                    <img alt="cover" class="no-fancybox" src="/img/block.jpg">
+                </span>
+                <h6 class="trm-op-title">电源</h6>
+            </a>
+            <div class="trm-divider trm-mb-15 trm-mt-20"></div>
+            <ul class="trm-card-data trm-label">
+                <li>26/09/22</li>
+                <li>14:40</li>
+                <li>技术</li>
+            </ul>
+        </div>
+    </div>
+</div>
+  
+    <div class="col-lg-6">
+    <div class="trm-older-publications-card trm-scroll-animation trm-active-el">
+        <div class="trm-older-publication">
+            
+            <a class="trm-op-top trm-anima-link" href="/motor/">
+                <span class="trm-op-cover">
+                    <img alt="cover" class="no-fancybox" src="/img/block.jpg">
+                </span>
+                <h6 class="trm-op-title">motor</h6>
+            </a>
+            <div class="trm-divider trm-mb-15 trm-mt-20"></div>
+            <ul class="trm-card-data trm-label">
+                <li>26/09/22</li>
+                <li>14:29</li>
+                <li>技术</li>
+            </ul>
+        </div>
+    </div>
+</div>
+  
+</div>
+
+
+
+    
+
+
+        </div>
+      </div>
+    </div>
+
+    <div class="trm-divider footer-divider"></div>
+    <footer class="trm-footer-card trm-scroll-animation">
+
+    
+
+    
+        <div class="trm-footer-item">
+            <span>© 2026 - 2026</span>
+            <span class="footer-separator"data-separator=" · "></span>
+            <span class="trm-accent-color">Grant</span>
+        </div>
+    
+
+    
+        <div class="trm-footer-item">
+            <span>
+                由 <a href="https://hexo.io" target="_blank" rel="noopener">Hexo</a> 驱动 v8.1.2
+            </span>
+            <span class="footer-separator" data-separator=" | "></span>
+            <span> 
+                主题 - 
+                <a rel="noopener" href='https://github.com/MaLuns/hexo-theme-async' target='_blank'>Async</a>
+                v2.2.7
+            </span>
+        </div>
+      
+
+     
+
+    
+        <div class="trm-footer-item">
+            已经到底了。
+        </div>
+     
+</footer>
+  </div>
+</div>
+
+            <!-- body end -->
+
+            
+
+    <div id="post-toc" class="trm-post-toc">
+      <div class="trm-post-toc-header">
+        目录导航
+				<span id="post-toc-top">
+					置顶
+				</span>
+      </div>
+      <div class="trm-post-toc-content">
+        <ol class="trm-toc"><li class="trm-toc-item trm-toc-level-2" title="RS-485（物理层：接线怎么接，哪个电压代表0或1）"><a rel="nofollow" class="trm-toc-link" href="#RS-485（物理层：接线怎么接，哪个电压代表0或1）"><span class="trm-toc-number">1.</span> <span class="trm-toc-text">RS-485（物理层：接线怎么接，哪个电压代表0或1）</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="Modbus RTU（协议层：数据包结构，加密解密，怎么传输等）"><a rel="nofollow" class="trm-toc-link" href="#Modbus-RTU（协议层：数据包结构，加密解密，怎么传输等）"><span class="trm-toc-number">1.1.</span> <span class="trm-toc-text">Modbus RTU（协议层：数据包结构，加密解密，怎么传输等）</span></a></li><li class="trm-toc-item trm-toc-level-3" title="Profibus-DP"><a rel="nofollow" class="trm-toc-link" href="#Profibus-DP"><span class="trm-toc-number">1.2.</span> <span class="trm-toc-text">Profibus-DP</span></a></li></ol></li><li class="trm-toc-item trm-toc-level-2" title="CAN"><a rel="nofollow" class="trm-toc-link" href="#CAN"><span class="trm-toc-number">2.</span> <span class="trm-toc-text">CAN</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="CANopen"><a rel="nofollow" class="trm-toc-link" href="#CANopen"><span class="trm-toc-number">2.1.</span> <span class="trm-toc-text">CANopen</span></a></li><li class="trm-toc-item trm-toc-level-3" title="DeviceNet"><a rel="nofollow" class="trm-toc-link" href="#DeviceNet"><span class="trm-toc-number">2.2.</span> <span class="trm-toc-text">DeviceNet</span></a></li></ol></li><li class="trm-toc-item trm-toc-level-2" title="以太网（100Base-TX）"><a rel="nofollow" class="trm-toc-link" href="#以太网（100Base-TX）"><span class="trm-toc-number">3.</span> <span class="trm-toc-text">以太网（100Base-TX）</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="Profinet"><a rel="nofollow" class="trm-toc-link" href="#Profinet"><span class="trm-toc-number">3.1.</span> <span class="trm-toc-text">Profinet</span></a></li><li class="trm-toc-item trm-toc-level-3" title="EtherCAT"><a rel="nofollow" class="trm-toc-link" href="#EtherCAT"><span class="trm-toc-number">3.2.</span> <span class="trm-toc-text">EtherCAT</span></a></li><li class="trm-toc-item trm-toc-level-3" title="PowerLink"><a rel="nofollow" class="trm-toc-link" href="#PowerLink"><span class="trm-toc-number">3.3.</span> <span class="trm-toc-text">PowerLink</span></a></li><li class="trm-toc-item trm-toc-level-3" title="Modbus TCP"><a rel="nofollow" class="trm-toc-link" href="#Modbus-TCP"><span class="trm-toc-number">3.4.</span> <span class="trm-toc-text">Modbus TCP</span></a></li><li class="trm-toc-item trm-toc-level-3" title="EtherNET&#x2F;IP"><a rel="nofollow" class="trm-toc-link" href="#EtherNET-IP"><span class="trm-toc-number">3.5.</span> <span class="trm-toc-text">EtherNET&#x2F;IP</span></a></li></ol></li></ol></li><li class="trm-toc-item trm-toc-level-1" title="通信方式"><a rel="nofollow" class="trm-toc-link" href="#通信方式"><span class="trm-toc-number"></span> <span class="trm-toc-text">通信方式</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-2" title="基础概念"><a rel="nofollow" class="trm-toc-link" href="#基础概念"><span class="trm-toc-number">1.</span> <span class="trm-toc-text">基础概念</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="1. GPIO"><a rel="nofollow" class="trm-toc-link" href="#1-GPIO"><span class="trm-toc-number">1.1.</span> <span class="trm-toc-text">1. GPIO</span></a></li><li class="trm-toc-item trm-toc-level-3" title="2. UART &#x2F; USART"><a rel="nofollow" class="trm-toc-link" href="#2-UART-USART"><span class="trm-toc-number">1.2.</span> <span class="trm-toc-text">2. UART &#x2F; USART</span></a></li><li class="trm-toc-item trm-toc-level-3" title="3. I2C"><a rel="nofollow" class="trm-toc-link" href="#3-I2C"><span class="trm-toc-number">1.3.</span> <span class="trm-toc-text">3. I2C</span></a></li><li class="trm-toc-item trm-toc-level-3" title="4. SPI"><a rel="nofollow" class="trm-toc-link" href="#4-SPI"><span class="trm-toc-number">1.4.</span> <span class="trm-toc-text">4. SPI</span></a></li><li class="trm-toc-item trm-toc-level-3" title="5. CAN"><a rel="nofollow" class="trm-toc-link" href="#5-CAN"><span class="trm-toc-number">1.5.</span> <span class="trm-toc-text">5. CAN</span></a></li><li class="trm-toc-item trm-toc-level-3" title="6. 其他"><a rel="nofollow" class="trm-toc-link" href="#6-其他"><span class="trm-toc-number">1.6.</span> <span class="trm-toc-text">6. 其他</span></a></li></ol></li><li class="trm-toc-item trm-toc-level-2" title="三、简单对比"><a rel="nofollow" class="trm-toc-link" href="#三、简单对比"><span class="trm-toc-number">2.</span> <span class="trm-toc-text">三、简单对比</span></a></li><li class="trm-toc-item trm-toc-level-2" title="注意点"><a rel="nofollow" class="trm-toc-link" href="#注意点"><span class="trm-toc-number">3.</span> <span class="trm-toc-text">注意点</span></a></li><li class="trm-toc-item trm-toc-level-2" title="通信外设&#x2F;协议类，和 UART 类似"><a rel="nofollow" class="trm-toc-link" href="#通信外设-协议类，和-UART-类似"><span class="trm-toc-number">4.</span> <span class="trm-toc-text">通信外设&#x2F;协议类，和 UART 类似</span></a></li><li class="trm-toc-item trm-toc-level-2" title="电气层概念，和 UART 搭配出现"><a rel="nofollow" class="trm-toc-link" href="#电气层概念，和-UART-搭配出现"><span class="trm-toc-number">5.</span> <span class="trm-toc-text">电气层概念，和 UART 搭配出现</span></a></li><li class="trm-toc-item trm-toc-level-2" title="软件抽象层概念"><a rel="nofollow" class="trm-toc-link" href="#软件抽象层概念"><span class="trm-toc-number">6.</span> <span class="trm-toc-text">软件抽象层概念</span></a></li></ol></li><li class="trm-toc-item trm-toc-level-1" title="ST-Link VS TTL"><a rel="nofollow" class="trm-toc-link" href="#ST-Link-VS-TTL"><span class="trm-toc-number"></span> <span class="trm-toc-text">ST-Link VS TTL</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-2" title="ST-Link 的原理"><a rel="nofollow" class="trm-toc-link" href="#ST-Link-的原理"><span class="trm-toc-number">1.</span> <span class="trm-toc-text">ST-Link 的原理</span></a></li><li class="trm-toc-item trm-toc-level-2" title="那 ST-Link 和 UART 完全没关系吗？"><a rel="nofollow" class="trm-toc-link" href="#那-ST-Link-和-UART-完全没关系吗？"><span class="trm-toc-number">2.</span> <span class="trm-toc-text">那 ST-Link 和 UART 完全没关系吗？</span></a></li><li class="trm-toc-item trm-toc-level-2" title="关键区别"><a rel="nofollow" class="trm-toc-link" href="#关键区别"><span class="trm-toc-number">3.</span> <span class="trm-toc-text">关键区别</span></a></li></ol>
+      </div>
+    </div>
+
+            
+<div class="trm-fixed-container">
+    
+        <div class="trm-fixed-btn post-toc-btn" data-title="目录">
+            <i class="iconfont fas fa-th-list"></i>
+        </div>
+    
+    
+        <div class="trm-fixed-btn" data-title="阅读模式" onclick="asyncFun.switchReadMode()">
+            <i class="iconfont fas fa-book-reader"></i>
+        </div>
+    
+    
+    <div id="trm-back-top" class="trm-fixed-btn" data-title="回到顶部">
+        <i class="iconfont fas fa-arrow-up"></i>
+    </div>
+</div>
+        </div>
+      </div>
+      <!-- scroll container end -->
+  </div>
+  <!-- app wrapper end -->
+
+  
+    <div class="trm-search-popup">
+        <div class="trm-search-wrapper">
+            <div class="form trm-search-form">
+                <div class="trm-search-input-icon">
+                    <i class="iconfont fas fa-search"></i>
+                </div>
+                <input class="trm-search-input" type="text" placeholder="搜索文章...">
+                <div class="trm-search-btn-close">
+                    <i class="iconfont fas fa-times"></i>
+                </div>
+            </div>
+            <div class="trm-search-result-container">
+                <div class="trm-search-empty">
+                    请输入关键词进行搜索
+                </div>
+            </div>
+            <div class="trm-search-footer">
+                <div class="trm-search-stats"></div>
+                <ul class="trm-search-commands">
+                    <li>
+                        <kbd class="command-palette-commands-key">
+                            <svg width="15" height="15" aria-label="Escape key" role="img">
+                                <g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                    stroke-width="1.2">
+                                    <path
+                                        d="M13.6167 8.936c-.1065.3583-.6883.962-1.4875.962-.7993 0-1.653-.9165-1.653-2.1258v-.5678c0-1.2548.7896-2.1016 1.653-2.1016.8634 0 1.3601.4778 1.4875 1.0724M9 6c-.1352-.4735-.7506-.9219-1.46-.8972-.7092.0246-1.344.57-1.344 1.2166s.4198.8812 1.3445.9805C8.465 7.3992 8.968 7.9337 9 8.5c.032.5663-.454 1.398-1.4595 1.398C6.6593 9.898 6 9 5.963 8.4851m-1.4748.5368c-.2635.5941-.8099.876-1.5443.876s-1.7073-.6248-1.7073-2.204v-.4603c0-1.0416.721-2.131 1.7073-2.131.9864 0 1.6425 1.031 1.5443 2.2492h-2.956">
+                                    </path>
+                                </g>
+                            </svg>
+                        </kbd>
+                        <span class="command-palette-Label">to close</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+  <!-- Plugin -->
+
+
+
+
+    
+    
+<script src="https://unpkg.com/@fancyapps/ui@4.0/dist/fancybox.umd.js"></script>
+
+    
+
+    
+
+    
+        
+<script src="https://unpkg.com/hexo-generator-searchdb@1.4.0/dist/search.js"></script>
+
+        <script src="/js/plugins/local_search.js?v=2.2.7"></script>
+    
+
+    <!-- 数学公式 -->
+    
+
+    <!-- 评论插件 -->
+    
+        
+
+        
+    
+
+		
+
+
+
+
+    <!-- Service Worker -->
+    
+    <!-- baidu push -->
+    
+
+
+<script id="async-script" src="/js/main.js?v=2.2.7"></script>
+
+<!-- CDN -->
+
+
+    
+
+    
+
+    
+
+
+
+</body>
+
+</html>
