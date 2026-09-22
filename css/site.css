@@ -139,10 +139,10 @@
     display: block !important;
   }
 
-  /* 归档页标签筛选卡片上移，叠进横幅下沿 */
+  /* 归档 / 标签筛选卡片的四分之一线对齐横幅下沿 */
   .archive-filter-row {
-    margin-top: -40px;
-    margin-bottom: 24px;
+    margin-top: calc(var(--archive-filter-offset, 0px) * -1);
+    margin-bottom: 0;
   }
 
   /* 横幅文字沉底，给上移的筛选卡 / 标题让位 */
@@ -156,12 +156,13 @@
     transform: translateY(-60px);
   }
 
-  .taxonomy-heading-row .col-lg-12 {
-    padding-bottom: 0;
+  /* 标签页筛选卡片后的标题跟随卡片底边，不再额外上移 */
+  .archive-filter-row + .taxonomy-heading-row {
+    transform: none;
   }
 
-  .taxonomy-heading-row .trm-title-with-divider {
-    margin-bottom: 10px;
+  .taxonomy-heading-row .col-lg-12 {
+    padding-bottom: 0;
   }
 
   /* 归档大卡摘要（正文截 120 字，见 archive-post-card.ejs） */
@@ -206,6 +207,192 @@
   }
 }
 
+/* ── 归档 / 标签大卡片 ───────────────────────────────────────── */
+/* 同一行的卡片等高，底部日期跟随卡片底边对齐 */
+.archive-post-list > .col-lg-6 {
+  display: flex;
+  flex-direction: column;
+}
+
+.archive-post-list > [hidden] {
+  display: none !important;
+}
+
+.archive-post-list .trm-blog-card {
+  display: flex;
+  flex: 1 1 auto;
+  flex-direction: column;
+}
+
+.archive-post-list .trm-card-descr {
+  display: flex;
+  flex: 1 1 auto;
+  flex-direction: column;
+}
+
+.archive-post-list .trm-card-data {
+  margin-top: auto;
+}
+
+/* ── 归档多条件筛选 ─────────────────────────────────────────── */
+.archive-multi-filter {
+  padding: 30px 40px;
+}
+
+.archive-filter-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 22px;
+}
+
+.archive-filter-title,
+.archive-filter-heading {
+  color: var(--primary, #afb42b);
+  font-size: 0.95rem;
+  font-weight: 600;
+}
+
+.archive-filter-reset {
+  border: 0;
+  background: transparent;
+  color: var(--primary, #afb42b);
+  cursor: pointer;
+  font-size: 0.85rem;
+}
+
+.archive-filter-reset:disabled {
+  cursor: default;
+  opacity: 0.35;
+}
+
+.archive-filter-heading {
+  margin-bottom: 14px;
+}
+
+.archive-filter-heading-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px 16px;
+  margin-bottom: 14px;
+}
+
+.archive-filter-heading-row .archive-filter-heading {
+  margin-bottom: 0;
+}
+
+.archive-filter-mode {
+  display: inline-flex;
+  overflow: hidden;
+  border: 1px solid var(--tab-border-color);
+  border-radius: 8px;
+}
+
+.archive-filter-mode-button {
+  border: 0;
+  background: transparent;
+  color: var(--body-color);
+  cursor: pointer;
+  font: inherit;
+  line-height: 1;
+  padding: 8px 10px;
+}
+
+.archive-filter-mode-button + .archive-filter-mode-button {
+  border-left: 1px solid var(--tab-border-color);
+}
+
+.archive-filter-mode-button[aria-pressed="true"] {
+  background: var(--theme-bg2-color);
+  color: var(--primary, #afb42b);
+}
+
+.archive-filter-options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.archive-filter-option {
+  border: 1px solid var(--tab-border-color);
+  border-radius: 8px;
+  background: transparent;
+  color: var(--body-color);
+  cursor: pointer;
+  font: inherit;
+  line-height: 1;
+  padding: 10px 12px;
+  transition: border-color 0.2s ease, color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.archive-filter-option:hover,
+.archive-filter-option[aria-pressed="true"] {
+  border-color: var(--primary, #afb42b);
+  color: var(--primary, #afb42b);
+  box-shadow: 0 0 0 1px var(--primary-30, rgba(175, 180, 43, 0.3));
+}
+
+.archive-filter-count {
+  margin-left: 6px;
+  opacity: 0.55;
+}
+
+.archive-filter-divider {
+  height: 1px;
+  margin: 24px 0;
+  background: var(--tab-border-color);
+}
+
+.archive-filter-empty {
+  margin: 0 0 var(--card-bottom-card);
+  padding: 28px 40px;
+  border-radius: var(--card-border-radius, 10px);
+  background: var(--theme-bg-color);
+  color: var(--body-color);
+  text-align: center;
+}
+
+/* ── 筛选组件响应式缩放（≤992px）────────────────────────────── */
+@media (max-width: 992px) {
+  .archive-multi-filter {
+    padding: clamp(18px, 2.6vw, 28px) clamp(14px, 2.6vw, 36px);
+  }
+
+  .archive-filter-title,
+  .archive-filter-heading {
+    font-size: clamp(0.78rem, 1.45vw, 0.95rem);
+  }
+
+  .archive-filter-reset {
+    font-size: clamp(0.7rem, 1.2vw, 0.85rem);
+  }
+
+  .archive-filter-option {
+    padding: clamp(6px, 1vw, 10px) clamp(8px, 1.3vw, 12px);
+    font-size: clamp(0.72rem, 1.15vw, 0.88rem);
+  }
+
+  .archive-filter-mode-button {
+    padding: clamp(6px, 1vw, 8px) clamp(8px, 1.3vw, 10px);
+    font-size: clamp(0.72rem, 1.15vw, 0.85rem);
+  }
+
+  .archive-filter-count {
+    margin-left: clamp(3px, 0.6vw, 6px);
+  }
+
+  .archive-filter-options {
+    gap: clamp(6px, 1vw, 10px);
+  }
+
+  .archive-filter-divider {
+    margin: clamp(16px, 2.5vw, 24px) 0;
+  }
+}
+
 /* ── 手机（≤768px）───────────────────────────────────────────── */
 @media (max-width: 768px) {
   .trm-banner .trm-banner-content .trm-banner-text .trm-banner-title {
@@ -227,6 +414,38 @@
 
   .trm-post-info .trm-post-taxonomy-with-tags {
     padding: 20px 8px 5px;
+  }
+
+  .archive-multi-filter {
+    padding: 22px 16px;
+  }
+
+  .archive-filter-head {
+    flex-wrap: wrap;
+    margin-bottom: 18px;
+  }
+
+  .archive-filter-row {
+    margin-left: 0;
+    margin-right: 0;
+  }
+
+  .archive-filter-row > .col-lg-12 {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
+  .archive-filter-heading-row {
+    align-items: center;
+  }
+
+  .archive-filter-mode {
+    margin-left: auto;
+  }
+
+  .archive-filter-mode-button {
+    flex: 0 0 auto;
+    text-align: center;
   }
 
   /* 覆盖 bootstrap 的 .hidden-sm（≤768px 隐藏），侧栏在手机上保持显示 */
