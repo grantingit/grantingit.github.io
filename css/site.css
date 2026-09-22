@@ -1,0 +1,248 @@
+/*
+ * 站点自定义样式：由 _config.async.yml 的 cdn.css 显式加载。
+ * 作为普通站点资源参与 hexo generate，避免主题 Less 间接 @import 的缓存导致部署后样式丢失。
+ */
+
+/* ── 顶栏 ─────────────────────────────────────────────────────── */
+/* <1200px：左侧区域允许收缩，站名单行完整显示 */
+@media (max-width: 1200px) {
+  .trm-top-bar .container .trm-left-side {
+    width: auto;
+    max-width: 70%;
+  }
+
+  .trm-top-bar .trm-logo-text {
+    display: block !important;
+    white-space: nowrap;
+  }
+}
+
+/* ≥1200px：左侧区域左对齐并微调内边距 */
+@media (min-width: 1200px) {
+  .trm-top-bar .container .trm-left-side {
+    justify-content: flex-start;
+    padding-left: 5px;
+  }
+}
+
+/* ── 隐藏元素 ─────────────────────────────────────────────────── */
+/* 横幅面包屑（本站导航简单，用不到）与滚动触发占位（主题拼写即 triger） */
+.trm-banner-text .trm-breadcrumbs,
+#scroll-triger {
+  display: none !important;
+}
+
+/* ── 横幅 ─────────────────────────────────────────────────────── */
+/* >992px：抵消 trm-content-start 的左右 40px 内缩，让顶图铺满应用框架 */
+@media (min-width: 993px) {
+  .trm-content-start > .trm-banner {
+    width: auto;
+    margin-left: -40px;
+    margin-right: -40px;
+    border-radius: 0;
+  }
+}
+
+/* ── 侧栏卡片 ─────────────────────────────────────────────────── */
+/* 卡片高度由内容决定（主题默认撑满视口），首页与内页同规格 */
+.trm-home-layout .trm-main-card,
+.trm-page-layout .trm-main-card {
+  height: auto;
+  min-height: 0;
+}
+
+/* 侧栏卡片进入吸顶（fixed）状态时恢复圆角（主题默认吸顶时为直角） */
+.trm-main-card-frame.fixed .trm-main-card {
+  border-radius: var(--card-border-radius, 10px) !important;
+}
+
+/* ── 侧栏信息 ─────────────────────────────────────────────────── */
+/* 标签保持单行；内容与标签同行靠右，空间不足时在内容列内换行。 */
+.trm-main-card-frame .trm-main-card .trm-table li {
+  flex-wrap: nowrap;
+  align-items: flex-start;
+}
+
+.trm-main-card-frame .trm-main-card .trm-table li > .trm-label:first-child {
+  flex: 0 0 auto;
+  white-space: nowrap;
+}
+
+.trm-main-card-frame .trm-main-card .trm-table li > .trm-label:last-child {
+  flex: 1 1 0;
+  min-width: 0;
+  margin-left: 10px;
+  text-align: right;
+  text-transform: none;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
+
+/* 作者等文章信息保留原始大小写 */
+#post-author {
+  text-transform: none;
+}
+
+/* ── 文章信息卡片 ─────────────────────────────────────────────── */
+/* 卡片中心与横幅下边缘对齐；不同断点补偿主题内容区的偏移 */
+.trm-post-info {
+  padding-top: 0;
+  margin-bottom: -30px;
+  transform: translateY(-70px);
+}
+
+.trm-post-taxonomy .trm-post-category {
+  display: block;
+}
+
+.trm-post-taxonomy-with-tags {
+  padding-top: 40px;
+  padding-bottom: 21px;
+}
+
+.trm-post-info .col-sm-4 {
+  display: flex;
+}
+
+.trm-post-info .trm-card {
+  width: 100%;
+}
+
+.trm-post-taxonomy .trm-post-tags {
+  display: block;
+  width: 100%;
+  margin-top: 4px;
+  overflow: visible;
+  font-size: 0.68rem;
+  line-height: 1.4;
+  text-transform: none;
+  text-overflow: clip;
+  white-space: nowrap;
+}
+
+@media (min-width: 993px) {
+  .trm-post-info {
+    transform: translateY(-30px);
+  }
+}
+
+@media (min-width: 769px) and (max-width: 992px) {
+  .trm-post-info {
+    margin-bottom: -70px;
+  }
+}
+
+/* ── 平板及以下（≤992px）：侧栏移到正文下方 ───────────────────── */
+@media (max-width: 992px) {
+  /* 侧栏保持显示、回归常规块级文档流 */
+  .trm-page-sidebar {
+    display: block !important;
+  }
+
+  /* 归档页标签筛选卡片上移，叠进横幅下沿 */
+  .archive-filter-row {
+    margin-top: -40px;
+    margin-bottom: 24px;
+  }
+
+  /* 横幅文字沉底，给上移的筛选卡 / 标题让位 */
+  .trm-banner-content {
+    align-items: flex-end;
+    padding-bottom: 24px;
+  }
+
+  /* 分类 / 标签页标题同样上移叠进横幅 */
+  .taxonomy-heading-row {
+    transform: translateY(-60px);
+  }
+
+  .taxonomy-heading-row .col-lg-12 {
+    padding-bottom: 0;
+  }
+
+  .taxonomy-heading-row .trm-title-with-divider {
+    margin-bottom: 10px;
+  }
+
+  /* 归档大卡摘要（正文截 120 字，见 archive-post-card.ejs） */
+  .trm-archive-card-excerpt {
+    margin: 16px 0 0;
+    color: var(--body-color, #7b7b7d);
+    font-size: 0.9rem;
+    line-height: 1.6;
+  }
+
+  /* 内页：正文在前、侧栏在后 */
+  .trm-page-layout .trm-page-sidebar {
+    order: 2;
+  }
+
+  .trm-page-layout .trm-page-content {
+    order: 1;
+  }
+
+  /* 侧栏卡片上移叠进横幅下方（主题默认 -40px），并收紧内边距 */
+  .trm-page-sidebar .trm-main-card-frame {
+    transform: translateY(-28px);
+  }
+
+  .trm-page-sidebar .trm-main-card {
+    height: auto;
+    padding: 28px;
+  }
+
+  .trm-page-sidebar .trm-mc-header .trm-avatar-frame .trm-avatar {
+    width: 84px;
+    height: 84px;
+  }
+
+  .trm-page-sidebar .trm-mc-header .trm-name {
+    font-size: 16px;
+  }
+
+  .trm-page-sidebar .trm-main-card .trm-social a svg,
+  .trm-page-sidebar .trm-main-card .trm-social a i {
+    font-size: 20px;
+  }
+}
+
+/* ── 手机（≤768px）───────────────────────────────────────────── */
+@media (max-width: 768px) {
+  .trm-banner .trm-banner-content .trm-banner-text .trm-banner-title {
+    white-space: normal !important;
+    overflow: visible !important;
+    text-overflow: clip !important;
+    line-height: 1.2;
+  }
+
+  .trm-post-info {
+    display: flex !important;
+    transform: translateY(-60px);
+  }
+
+  .trm-post-info .col-sm-4 {
+    flex: 0 0 33.333333%;
+    max-width: 33.333333%;
+  }
+
+  .trm-post-info .trm-post-taxonomy-with-tags {
+    padding: 20px 8px 5px;
+  }
+
+  /* 覆盖 bootstrap 的 .hidden-sm（≤768px 隐藏），侧栏在手机上保持显示 */
+  .trm-page-sidebar.hidden-sm {
+    display: block !important;
+  }
+
+  /* 上移后的分类 / 标签标题去掉背景填充 */
+  .taxonomy-heading-row .trm-title-with-divider {
+    background: transparent;
+  }
+
+  /* 侧栏卡片左右留边，上移量进一步收小 */
+  .trm-page-sidebar .trm-main-card-frame {
+    margin-left: 16px;
+    margin-right: 16px;
+    transform: translateY(-16px);
+  }
+}
